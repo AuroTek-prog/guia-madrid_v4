@@ -19,43 +19,92 @@ Proyecto frontend estático para guías personalizadas de apartamentos turístic
 - **Despliegue**: GitHub Pages (estático, sin servidor).
 
 ## Estructura del proyecto
+***📖 Resumen de las Mejoras Clave en la Estructura***
+1. Nombre del Proyecto: guia-madrid_v3 → aurotek-guest-guide para reflejar su naturaleza multi-ciudad.
+2. Datos Multi-ciudad:
+- cities.json: Nuevo archivo maestro para definir las ciudades.
+- {cityId}.json: Archivos individuales para el contenido turístico de cada ciudad (ej. barcelona.json).
+- apartments.json, zones.json, partners.json: Ahora incluyen el campo cityId para asociar cada elemento a una ciudad.
+3. JavaScript Mejorado:
+- main.js: Es ahora el cerebro de la app, con la clase GeoDetector, gestión de caché y temas.
+- recommendations.js y tourism.js: Son completamente dinámicos y se adaptan a la ciudad actual.
+4. Assets Organizados: La carpeta assets/images/tourism ahora está subdividida por ciudad, manteniendo todo ordenado y escalable.
+
 
 ```
-guia-madrid_v3/
-├── index.html                  # Página principal (selección idioma + navegación)
-├── gestor.html                 # Panel para gestores (lista de apartamentos)
-├── partner-panel.html          # Panel para partners comerciales (zonas y pisos cubiertos)
+aurotek-guest-guide/                          # Renombrado para reflejar el alcance multi-ciudad
+│
+├── README.md                                   # Documentación actualizada del proyecto
+│
+├── index.html                                  # Página principal (selección idioma + navegación)
+├── gestor.html                                 # Panel para gestores (lista de apartamentos)
+├── partner-panel.html                          # Panel para partners (zonas y pisos cubiertos)
 │
 ├── pages/
-│   ├── essentials.html         # Información esencial (WiFi, acceso, reglas, Raixer)
-│   ├── devices.html            # Dispositivos del apartamento
-│   ├── recommendations.html    # Recomendaciones locales (estáticas + partners dinámicos)
-│   ├── tourism.html            # Guía turística de Madrid
-│   └── contact.html            # Contacto y emergencias
+│   ├── essentials.html                         # Información esencial (WiFi, acceso, reglas, Raixer)
+│   ├── devices.html                            # Dispositivos del apartamento
+│   ├── recommendations.html                     # Recomendaciones locales (estáticas + partners dinámicos)
+│   ├── tourism.html                            # Guía turística (DINÁMICA según ciudad del apartamento)
+│   └── contact.html                            # Contacto y emergencias
 │
 ├── js/
-│   ├── main.js                 # Estado global, t(), copyToClipboard, goBack, changeLanguage, setupBottomNavigation, getApartmentZone (Turf)
-│   ├── index.js                # Lógica home (renderPage, startGuide, changeLanguage)
-│   ├── essentials.js           # Raixer dinámico (/doors), LEDs, animación éxito
-│   ├── recommendations.js      # Recomendaciones estáticas + partners dinámicos + filtro por categoría
-│   └── ... (devices.js, tourism.js, etc. si existen)
+│   ├── main.js                                 # ⭐ Núcleo de la aplicación:
+│   │                                             # - Estado global (appState)
+│   │                                             # - Gestión de temas (claro/oscuro/auto)
+│   │                                             # - Sistema de caché (CacheManager)
+│   │                                             # - Clase GeoDetector (ciudades y zonas con Turf.js)
+│   │                                             # - Funciones globales (t(), safeText(), copyToClipboard(), etc.)
+│   │                                             # - Lógica de inicialización
+│   ├── index.js                                 # Lógica de la página principal
+│   ├── essentials.js                            # Lógica de esenciales (Raixer dinámico)
+│   ├── recommendations.js                       # ⭐ Recomendaciones mejoradas:
+│   │                                             # - Usa GeoDetector para filtrar por ciudad y zona
+│   │                                             # - Gestión de partners (top, premium, básicos)
+│   │                                             # - Filtrado por categoría
+│   ├── tourism.js                               # ⭐ Guía turística multi-ciudad:
+│   │                                             # - Carga datos dinámicamente (madrid.json, barcelona.json, etc.)
+│   │                                             # - Renderiza contenido según la ciudad del apartamento
+│   ├── devices.js                               # Lógica de dispositivos
+│   └── contact.js                               # Lógica de contacto
 │
 ├── data/
-│   ├── apartments.json         # Todos los pisos (multi-apartamento, con lat/lng, zone)
-│   ├── zones.json              # Zonas de Madrid con polígonos (para geolocalización)
-│   ├── partners.json           # Locales comerciales (premium/global + básicos por zona)
-│   ├── es.json                 # Traducciones español
-│   ├── en.json                 # Inglés
-│   ├── fr.json                 # Francés
-│   └── de.json                 # Alemán
+│   ├── apartments.json                          # ⭐ Apartamentos (AHORA CON CAMPO `cityId`)
+│   ├── cities.json                              # 🆕 Información de ciudades (polígonos, nombre, etc.)
+│   ├── zones.json                               # ⭐ Zonas (AHORA CON CAMPO `cityId` para multi-ciudad)
+│   ├── partners.json                            # ⭐ Partners (AHORA CON CAMPO `cityId`)
+│   ├── madrid.json                              # 🆕 Contenido turístico específico de Madrid
+│   ├── barcelona.json                           # 🆕 Contenido turístico específico de Barcelona
+│   ├── valencia.json                            # 🆕 Contenido turístico específico de Valencia
+│   ├── es.json                                  # Traducciones español (con claves de todas las ciudades)
+│   ├── en.json                                  # Traducciones inglés
+│   ├── fr.json                                  # Traducciones francés
+│   └── de.json                                  # Traducciones alemán
 │
 ├── assets/
 │   └── images/
-│       ├── apartments/         # Fotos por apartamento (portada, acceso, host)
-│       └── partners/           # Fotos de locales comerciales
+│       ├── apartments/                          # Fotos por apartamento (portada, acceso, host)
+│       │   ├── madrid-sol-101/
+│       │   ├── barcelona-gotic-205/
+│       │   └── valencia-beach-301/
+│       ├── partners/                            # Fotos de locales comerciales
+│       │   ├── rest-001/
+│       │   └── shop-045/
+│       └── tourism/                             # 🆕 Estructura por ciudad para turismo
+│           ├── madrid/
+│           │   ├── madrid-skyline.jpg           # Imagen de héroe
+│           │   ├── royal-palace.jpg
+│           │   └── prado-museum.jpg
+│           ├── barcelona/
+│           │   ├── barcelona-skyline.jpg        # Imagen de héroe
+│           │   ├── sagrada-familia.jpg
+│           │   └── park-guell.jpg
+│           └── valencia/
+│               ├── valencia-skyline.jpg         # Imagen de héroe
+│               ├── city-arts-sciences.jpg
+│               └── valencia-cathedral.jpg
 │
 └── css/
-    └── styles.css              # Estilos personalizados (si hay)
+    └── styles.css                               # Estilos personalizados (si hay)
 ```
 
 ## Cómo añadir un nuevo apartamento (para gestores)
