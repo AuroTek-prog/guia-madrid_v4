@@ -3,6 +3,7 @@
     "id": "madrid",
     "name": "Madrid",
     "country": "España",
+    "center": [ -3.7038, 40.4168 ],
     "polygon": [
       [-3.889, 40.312],
       [-3.518, 40.312],
@@ -10,18 +11,28 @@
       [-3.889, 40.564],
       [-3.889, 40.312]
     ],
+    "heroImage": "assets/images/tourism/madrid/madrid-skyline.jpg",
     "tourismInfo": {
       "description": "Madrid, la vibrante capital de España, es conocida por su rica historia, arte excepcional y vida nocturna animada.",
+      "bestTimeToVisit": "Primavera y otoño ofrecen un clima ideal para explorar la ciudad.",
       "mustSee": [
         {
           "name": "Museo del Prado",
           "description": "Uno de los museos de arte más importantes del mundo.",
-          "image": "assets/images/tourism/madrid/prado.jpg"
+          "image": "assets/images/tourism/madrid/prado.jpg",
+          "category": "museum"
         },
         {
           "name": "Palacio Real",
           "description": "La residencia oficial de la familia real española.",
-          "image": "assets/images/tourism/madrid/palacio.jpg"
+          "image": "assets/images/tourism/madrid/palacio.jpg",
+          "category": "historical"
+        },
+        {
+          "name": "Templo de Debod",
+          "description": "Un antiguo templo egipcio con vistas espectaculares al atardecer.",
+          "image": "assets/images/tourism/madrid/templo-debod.jpg",
+          "category": "historical"
         }
       ]
     }
@@ -30,6 +41,7 @@
     "id": "barcelona",
     "name": "Barcelona",
     "country": "España",
+    "center": [ 2.1734, 41.3851 ],
     "polygon": [
       [2.052, 41.280],
       [2.229, 41.280],
@@ -37,18 +49,72 @@
       [2.052, 41.450],
       [2.052, 41.280]
     ],
+    "heroImage": "assets/images/tourism/barcelona/barcelona-skyline.jpg",
     "tourismInfo": {
       "description": "Barcelona es una ciudad cosmopolita con increíble arquitectura modernista, playas y gastronomía de renombre mundial.",
+      "bestTimeToVisit": "De mayo a junio y de septiembre a octubre para evitar multitudes y disfrutar del clima.",
       "mustSee": [
         {
           "name": "Sagrada Familia",
           "description": "La icónica iglesia inacabada de Antoni Gaudí.",
-          "image": "assets/images/tourism/barcelona/sagrada.jpg"
+          "image": "assets/images/tourism/barcelona/sagrada.jpg",
+          "category": "historical"
         },
         {
           "name": "Park Güell",
           "description": "Un parque público lleno de coloridos mosaicos y diseños de Gaudí.",
-          "image": "assets/images/tourism/barcelona/park.jpg"
+          "image": "assets/images/tourism/barcelona/park.jpg",
+          "category": "park"
+        },
+        {
+          "name": "Las Ramblas",
+          "description": "El famoso bulevar peatonal que cruza el corazón de la ciudad.",
+          "image": "assets/images/tourism/barcelona/ramblas.jpg",
+          "category": "street"
+        }
+      ]
+    }
+  },
+  {
+    "id": "valencia",
+    "name": "Valencia",
+    "country": "España",
+    "center": [ -0.3763, 39.4699 ],
+    "polygon": [
+      [-0.450, 39.400],
+      [-0.250, 39.400],
+      [-0.250, 39.550],
+      [-0.450, 39.550],
+      [-0.450, 39.400]
+    ],
+    "heroImage": "assets/images/tourism/valencia/valencia-skyline.jpg",
+    "tourismInfo": {
+      "description": "Valencia, la tercera ciudad más grande de España, combina a la perfección historia moderna con tradiciones centenarias, famosa por la paella y la Ciudad de las Artes y las Ciencias.",
+      "bestTimeToVisit": "Primavera para disfrutar de las Fallas o otoño para un clima agradable con menos turistas.",
+      "mustSee": [
+        {
+          "name": "Ciudad de las Artes y las Ciencias",
+          "description": "Un impresionante complejo arquitectónico moderno con museos, acuario y planetario.",
+          "image": "assets/images/tourism/valencia/ciudad-artes-ciencias.jpg",
+          "category": "modern"
+        },
+        {
+          "name": "Catedral de Valencia",
+          "description": "Impresionante gótico que alberga el Santo Grial según la tradición católica.",
+          "image": "assets/images/tourism/valencia/catedral.jpg",
+          "category": "historical"
+        },
+        {
+          "name": "Mercado Central",
+          "description": "Uno de los mercados más grandes y antiguos de Europa, perfecto para descubrir productos locales.",
+          "image": "assets/images/tourism/valencia/mercado-central.jpg",
+          "category": "gastronomy"
+        },
+        {
+          "name": "Jardín del Turia",
+          "description": "Un enorme parque urbano construido en el cauce seco del río Turia.",
+          "image": "assets/images/tourism/valencia/jardin-turia.jpg",
+          "category": "park"
         }
       ]
     }

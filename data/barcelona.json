@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "image": "assets/images/barcelona/barcelona-skyline.jpg",
+    "sloganKey": "hero_slogan",
+    "descriptionKey": "hero_description"
+  },
+  "experiences": [
+    {
+      "id": "sagrada-familia",
+      "nameKey": "sagrada_familia_name",
+      "categoryKey": "historical_landmark",
+      "descriptionKey": "sagrada_familia_desc",
+      "image": "assets/images/barcelona/sagrada-familia.jpg"
+    },
+    {
+      "id": "park-guell",
+      "nameKey": "park_guell_name",
+      "categoryKey": "nature_leisure",
+      "descriptionKey": "park_guell_desc",
+      "image": "assets/images/barcelona/park-guell.jpg"
+    },
+    {
+      "id": "las-ramblas",
+      "nameKey": "las_ramblas_name",
+      "categoryKey": "shopping_entertainment",
+      "descriptionKey": "las_ramblas_desc",
+      "image": "assets/images/barcelona/las-ramblas.jpg"
+    },
+    {
+      "id": "casa-batllo",
+      "nameKey": "casa_batllo_name",
+      "categoryKey": "art_culture",
+      "descriptionKey": "casa_batllo_desc",
+      "image": "assets/images/barcelona/casa-batllo.jpg"
+    },
+    {
+      "id": "casa-mila",
+      "nameKey": "casa_mila_name",
+      "categoryKey": "art_culture",
+      "descriptionKey": "casa_mila_desc",
+      "image": "assets/images/barcelona/casa-mila.jpg"
+    },
+    {
+      "id": "gothic-quarter",
+      "nameKey": "gothic_quarter_name",
+      "categoryKey": "historical_landmark",
+      "descriptionKey": "gothic_quarter_desc",
+      "image": "assets/images/barcelona/gothic-quarter.jpg"
+    },
+    {
+      "id": "barceloneta-beach",
+      "nameKey": "barceloneta_beach_name",
+      "categoryKey": "nature_leisure",
+      "descriptionKey": "barceloneta_beach_desc",
+      "image": "assets/images/barcelona/barceloneta-beach.jpg"
+    },
+    {
+      "id": "camp-nou",
+      "nameKey": "camp_nou_name",
+      "categoryKey": "sports",
+      "descriptionKey": "camp_nou_desc",
+      "image": "assets/images/barcelona/camp-nou.jpg"
+    },
+    {
+      "id": "boqueria-market",
+      "nameKey": "boqueria_market_name",
+      "categoryKey": "gastronomy",
+      "descriptionKey": "boqueria_market_desc",
+      "image": "assets/images/barcelona/boqueria-market.jpg"
+    },
+    {
+      "id": "montjuic",
+      "nameKey": "montjuic_name",
+      "categoryKey": "nature_leisure",
+      "descriptionKey": "montjuic_desc",
+      "image": "assets/images/barcelona/montjuic.jpg"
+    },
+    {
+      "id": "picasso-museum",
+      "nameKey": "picasso_museum_name",
+      "categoryKey": "art_culture",
+      "descriptionKey": "picasso_museum_desc",
+      "image": "assets/images/barcelona/picasso-museum.jpg"
+    },
+    {
+      "id": "casa-amatller",
+      "nameKey": "casa_amatller_name",
+      "categoryKey": "art_culture",
+      "descriptionKey": "casa_amatller_desc",
+      "image": "assets/images/barcelona/casa-amatller.jpg"
+    }
+  ]
+}

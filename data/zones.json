@@ -1,6 +1,7 @@
 [
   {
     "id": "centro",
+    "cityId": "madrid",
     "name": "Centro",
     "barrios": ["Palacio", "Embajadores", "Cortes", "Justicia", "Universidad", "Sol"],
     "polygon": [
@@ -14,6 +15,7 @@
   },
   {
     "id": "arganzuela",
+    "cityId": "madrid",
     "name": "Arganzuela",
     "barrios": ["Imperial", "Acacias", "Chopera", "Legazpi", "Delicias", "Palos de Moguer", "Atocha"],
     "polygon": [
@@ -26,6 +28,7 @@
   },
   {
     "id": "retiro",
+    "cityId": "madrid",
     "name": "Retiro",
     "barrios": ["Pacífico", "Adelfas", "Estrella", "Ibiza", "Jerónimos", "Niño Jesús"],
     "polygon": [
@@ -39,6 +42,7 @@
   },
   {
     "id": "salamanca",
+    "cityId": "madrid",
     "name": "Salamanca",
     "barrios": ["Recoletos", "Goya", "Fuente del Berro", "Guindalera", "Lista", "Castellana"],
     "polygon": [
@@ -51,6 +55,7 @@
   },
   {
     "id": "chamartin",
+    "cityId": "madrid",
     "name": "Chamartín",
     "barrios": ["El Viso", "Prosperidad", "Ciudad Jardín", "Hispanoamérica", "Nueva España", "Castilla"],
     "polygon": [
@@ -63,6 +68,7 @@
   },
   {
     "id": "tetuan",
+    "cityId": "madrid",
     "name": "Tetuán",
     "barrios": ["Bellas Vistas", "Cuatro Caminos", "Castillejos", "Almenara", "Valdeacederas", "Berruguete"],
     "polygon": [
@@ -75,6 +81,7 @@
   },
   {
     "id": "chamberi",
+    "cityId": "madrid",
     "name": "Chamberí",
     "barrios": ["Gaztambide", "Arapiles", "Trafalgar", "Almagro", "Ríos Rosas", "Vallehermoso"],
     "polygon": [
@@ -87,6 +94,7 @@
   },
   {
     "id": "moncloa-aravaca",
+    "cityId": "madrid",
     "name": "Moncloa-Aravaca",
     "barrios": ["Casa de Campo", "Argüelles", "Ciudad Universitaria", "Valdezarza"],
     "polygon": [
@@ -99,6 +107,7 @@
   },
   {
     "id": "latina",
+    "cityId": "madrid",
     "name": "Latina",
     "barrios": ["Los Cármenes", "Puerta del Ángel", "Aluche", "Campamento"],
     "polygon": [
@@ -111,6 +120,7 @@
   },
   {
     "id": "carabanchel",
+    "cityId": "madrid",
     "name": "Carabanchel",
     "barrios": ["San Isidro", "Comillas", "Vista Alegre", "Opañel", "Puerta Bonita", "Buenavista", "Abrantes"],
     "polygon": [
@@ -123,6 +133,7 @@
   },
   {
     "id": "fuencarral-el-pardo",
+    "cityId": "madrid",
     "name": "Fuencarral-El Pardo",
     "barrios": ["El Pardo", "Montecarmelo", "Valverde", "Mirasierra", "La Paz", "Peñagrande"],
     "polygon": [
@@ -135,6 +146,7 @@
   },
   {
     "id": "hortaleza",
+    "cityId": "madrid",
     "name": "Hortaleza",
     "barrios": ["Pinar del Rey", "Canillas", "Sanchinarro", "Valdefuentes", "Huerta de la Salud", "Apóstol Santiago"],
     "polygon": [
@@ -147,6 +159,7 @@
   },
   {
     "id": "villaverde",
+    "cityId": "madrid",
     "name": "Villaverde",
     "barrios": ["San Andrés", "Butarque", "Los Ángeles", "Villaverde Alto", "Villaverde Bajo"],
     "polygon": [
@@ -159,6 +172,7 @@
   },
   {
     "id": "usera",
+    "cityId": "madrid",
     "name": "Usera",
     "barrios": ["Usera", "Moscardó", "Almendrales", "Orcasitas", "San Fermín"],
     "polygon": [
@@ -167,6 +181,266 @@
       [-3.690, 40.383],
       [-3.724, 40.383],
       [-3.724, 40.406]
+    ]
+  },
+  {
+    "id": "ciutat-vella",
+    "cityId": "barcelona",
+    "name": "Ciutat Vella",
+    "barrios": ["Gòtic", "El Raval", "El Born", "La Barceloneta"],
+    "polygon": [
+      [2.1734, 41.3851],
+      [2.1944, 41.3851],
+      [2.1944, 41.3736],
+      [2.1734, 41.3736],
+      [2.1734, 41.3851]
+    ]
+  },
+  {
+    "id": "eixample",
+    "cityId": "barcelona",
+    "name": "Eixample",
+    "barrios": ["Dreta de l'Eixample", "Antiga Esquerra de l'Eixample", "Nova Esquerra de l'Eixample", "Fort Pienc", "Sant Antoni"],
+    "polygon": [
+      [2.1630, 41.3980],
+      [2.1900, 41.3980],
+      [2.1900, 41.3800],
+      [2.1630, 41.3800],
+      [2.1630, 41.3980]
+    ]
+  },
+  {
+    "id": "sants-montjuic",
+    "cityId": "barcelona",
+    "name": "Sants-Montjuïc",
+    "barrios": ["Sants", "Badal", "La Marina del Prat Vermell", "La Marina de Port", "La Font de la Guatlla", "Hostafrancs", "El Poble Sec"],
+    "polygon": [
+      [2.1200, 41.3800],
+      [2.1600, 41.3800],
+      [2.1600, 41.3600],
+      [2.1200, 41.3600],
+      [2.1200, 41.3800]
+    ]
+  },
+  {
+    "id": "les-corts",
+    "cityId": "barcelona",
+    "name": "Les Corts",
+    "barrios": ["Les Corts", "La Maternitat i San Ramón", "Pedralbes"],
+    "polygon": [
+      [2.1100, 41.3900],
+      [2.1300, 41.3900],
+      [2.1300, 41.3800],
+      [2.1100, 41.3800],
+      [2.1100, 41.3900]
+    ]
+  },
+  {
+    "id": "sarria-sant-gervasi",
+    "cityId": "barcelona",
+    "name": "Sarrià-Sant Gervasi",
+    "barrios": ["Sarrià", "Sant Gervasi", "Vallvidrera", "Tibidabo", "Les Planes"],
+    "polygon": [
+      [2.1000, 41.4100],
+      [2.1300, 41.4100],
+      [2.1300, 41.3900],
+      [2.1000, 41.3900],
+      [2.1000, 41.4100]
+    ]
+  },
+  {
+    "id": "gracia",
+    "cityId": "barcelona",
+    "name": "Gràcia",
+    "barrios": ["Vila de Gràcia", "Camp d'en Grassot", "La Salut", "El Coll", "Vallcarca"],
+    "polygon": [
+      [2.1400, 41.4100],
+      [2.1600, 41.4100],
+      [2.1600, 41.3900],
+      [2.1400, 41.3900],
+      [2.1400, 41.4100]
+    ]
+  },
+  {
+    "id": "horta-guinardo",
+    "cityId": "barcelona",
+    "name": "Horta-Guinardó",
+    "barrios": ["Horta", "El Carmel", "La Teixonera", "El Guinardó", "Can Baró", "Vall d'Hebron", "La Clota"],
+    "polygon": [
+      [2.1600, 41.4300],
+      [2.1900, 41.4300],
+      [2.1900, 41.4100],
+      [2.1600, 41.4100],
+      [2.1600, 41.4300]
+    ]
+  },
+  {
+    "id": "nou-barris",
+    "cityId": "barcelona",
+    "name": "Nou Barris",
+    "barrios": ["Vilapicina", "Roquetes", "Porta", "Turó de la Peira", "Can Peguera", "La Guineueta", "Canyelles", "Verdun", "Prosperitat", "Trinitat Nova"],
+    "polygon": [
+      [2.1700, 41.4500],
+      [2.2000, 41.4500],
+      [2.2000, 41.4300],
+      [2.1700, 41.4300],
+      [2.1700, 41.4500]
+    ]
+  },
+  {
+    "id": "sant-andreu",
+    "cityId": "barcelona",
+    "name": "Sant Andreu",
+    "barrios": ["Sant Andreu de Palomar", "La Sagrera", "Trinitat Vella", "Baró de Viver", "Bon Pastor", "El Congrés", "Els Indians"],
+    "polygon": [
+      [2.1900, 41.4400],
+      [2.2200, 41.4400],
+      [2.2200, 41.4200],
+      [2.1900, 41.4200],
+      [2.1900, 41.4400]
+    ]
+  },
+  {
+    "id": "sant-marti",
+    "cityId": "barcelona",
+    "name": "Sant Martí",
+    "barrios": ["El Poblenou", "El Parc i la Llacuna del Poblenou", "La Vila Olímpica", "El Besòs", "Provençals", "Sant Martí de Provençals", "La Verneda", "Clot"],
+    "polygon": [
+      [2.1900, 41.4200],
+      [2.2300, 41.4200],
+      [2.2300, 41.4000],
+      [2.1900, 41.4000],
+      [2.1900, 41.4200]
+    ]
+  },
+  {
+    "id": "ciutat-vella-valencia",
+    "cityId": "valencia",
+    "name": "Ciutat Vella",
+    "barrios": ["La Seu", "La Xerea", "El Carme", "El Pilar", "El Mercat", "Sant Francesc"],
+    "polygon": [
+      [-0.3800, 39.4700],
+      [-0.3700, 39.4700],
+      [-0.3700, 39.4600],
+      [-0.3800, 39.4600],
+      [-0.3800, 39.4700]
+    ]
+  },
+  {
+    "id": "eixample-valencia",
+    "cityId": "valencia",
+    "name": "Eixample",
+    "barrios": ["Russafa", "El Pla del Remei", "Gran Via"],
+    "polygon": [
+      [-0.3800, 39.4800],
+      [-0.3600, 39.4800],
+      [-0.3600, 39.4700],
+      [-0.3800, 39.4700],
+      [-0.3800, 39.4800]
+    ]
+  },
+  {
+    "id": "extramurs",
+    "cityId": "valencia",
+    "name": "Extramurs",
+    "barrios": ["La Petxina", "Arrancapins"],
+    "polygon": [
+      [-0.3900, 39.4700],
+      [-0.3800, 39.4700],
+      [-0.3800, 39.4600],
+      [-0.3900, 39.4600],
+      [-0.3900, 39.4700]
+    ]
+  },
+  {
+    "id": "camins-al-grau",
+    "cityId": "valencia",
+    "name": "Camins al Grau",
+    "barrios": ["Algiros", "Illa Perduda", "Camí Fondo", "Penya-Roja"],
+    "polygon": [
+      [-0.3500, 39.4700],
+      [-0.3300, 39.4700],
+      [-0.3300, 39.4600],
+      [-0.3500, 39.4600],
+      [-0.3500, 39.4700]
+    ]
+  },
+  {
+    "id": "algirós",
+    "cityId": "valencia",
+    "name": "Algirós",
+    "barrios": ["L'Illa Perduda", "Ciudad Jardín", "Amistat", "La Vega Baixa", "La Carrasca"],
+    "polygon": [
+      [-0.3600, 39.4800],
+      [-0.3400, 39.4800],
+      [-0.3400, 39.4700],
+      [-0.3600, 39.4700],
+      [-0.3600, 39.4800]
+    ]
+  },
+  {
+    "id": "benimaclet",
+    "cityId": "valencia",
+    "name": "Benimaclet",
+    "barrios": ["Benimaclet"],
+    "polygon": [
+      [-0.3600, 39.4900],
+      [-0.3400, 39.4900],
+      [-0.3400, 39.4800],
+      [-0.3600, 39.4800],
+      [-0.3600, 39.4900]
+    ]
+  },
+  {
+    "id": "patraix",
+    "cityId": "valencia",
+    "name": "Patraix",
+    "barrios": ["Patraix", "Sant Isidre", "Vara de Quart", "Safranar"],
+    "polygon": [
+      [-0.3900, 39.4800],
+      [-0.3700, 39.4800],
+      [-0.3700, 39.4700],
+      [-0.3900, 39.4700],
+      [-0.3900, 39.4800]
+    ]
+  },
+  {
+    "id": "jesus",
+    "cityId": "valencia",
+    "name": "Jesús",
+    "barrios": ["La Roqueta", "San Marcelino", "Tres Forques"],
+    "polygon": [
+      [-0.3800, 39.4600],
+      [-0.3600, 39.4600],
+      [-0.3600, 39.4500],
+      [-0.3800, 39.4500],
+      [-0.3800, 39.4600]
+    ]
+  },
+  {
+    "id": "quatre-carreres",
+    "cityId": "valencia",
+    "name": "Quatre Carreres",
+    "barrios": ["Mont-Olivet", "En Corts", "Malilla", "Faitanar"],
+    "polygon": [
+      [-0.3700, 39.4500],
+      [-0.3500, 39.4500],
+      [-0.3500, 39.4400],
+      [-0.3700, 39.4400],
+      [-0.3700, 39.4500]
+    ]
+  },
+  {
+    "id": "poblats-maritims",
+    "cityId": "valencia",
+    "name": "Poblats Marítims",
+    "barrios": ["El Grau", "El Cabanyal", "El Canyamelar", "La Malva-rosa", "Beteró", "Natzaret"],
+    "polygon": [
+      [-0.3200, 39.4700],
+      [-0.3000, 39.4700],
+      [-0.3000, 39.4600],
+      [-0.3200, 39.4600],
+      [-0.3200, 39.4700]
     ]
   }
 ]
