@@ -199,14 +199,15 @@
 
 <!-- Scripts al final – en orden correcto -->
 <script>
-    window.ROOT_PATH = './';
+    // CAMBIO 1: Configuración de ROOT_PATH para GitHub Pages
+    window.ROOT_PATH = '/guia-madrid_v4/';
 </script>
 
 <!-- Primero main.js (define appState y utilidades) -->
-<script src="./js/main.js" defer></script>
+<script src="js/main.js" defer></script>
 
 <!-- Después index.js (usa appState y renderiza la página) -->
-<script src="./js/index.js" defer></script>
+<script src="js/index.js" defer></script>
 
 </body>
 </html>
