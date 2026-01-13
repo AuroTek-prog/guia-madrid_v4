@@ -23,12 +23,12 @@ window.appState = {
 const CacheManager = {
     cache: {},
     expiry: {},
-    
-    set(key, value, ttl = 3600000) { // TTL por defecto: 1 hora
+
+    set(key, value, ttl = 3600000) {
         this.cache[key] = value;
         this.expiry[key] = Date.now() + ttl;
     },
-    
+
     get(key) {
         if (!this.cache[key] || !this.expiry[key] || Date.now() > this.expiry[key]) {
             delete this.cache[key];
@@ -37,7 +37,7 @@ const CacheManager = {
         }
         return this.cache[key];
     },
-    
+
     clear(key) {
         if (key) {
             delete this.cache[key];
@@ -54,7 +54,7 @@ const CacheManager = {
 // ==============================
 window.t = function(key, fallback = null) {
     if (!window.appState?.translations) return fallback || `[${key}]`;
-    
+
     const result = key.split('.').reduce((obj, k) => obj?.[k], window.appState.translations);
     return result !== undefined ? result : (fallback || `[${key}]`);
 };
@@ -68,7 +68,7 @@ window.safeText = function(id, value, fallback = '') {
         console.warn(`⚠️ Elemento #${id} no encontrado`);
         return;
     }
-    
+
     if (value !== undefined && value !== null) {
         el.textContent = value;
     } else if (fallback) {
@@ -85,7 +85,7 @@ window.safeHTML = function(id, html, fallback = '') {
         console.warn(`⚠️ Elemento #${id} no encontrado`);
         return;
     }
-    
+
     if (html !== undefined && html !== null) {
         el.innerHTML = html;
     } else if (fallback) {
@@ -98,7 +98,6 @@ window.safeHTML = function(id, html, fallback = '') {
 // ==============================
 window.copyToClipboard = function(text) {
     if (!navigator.clipboard) {
-        // Fallback para navegadores antiguos
         const textArea = document.createElement('textarea');
         textArea.value = text;
         document.body.appendChild(textArea);
@@ -108,7 +107,7 @@ window.copyToClipboard = function(text) {
         showNotification(t('common.copied') || 'Copiado');
         return;
     }
-    
+
     navigator.clipboard.writeText(text)
         .then(() => showNotification(t('common.copied') || 'Copiado'))
         .catch(err => {
@@ -122,19 +121,18 @@ window.copyToClipboard = function(text) {
 // ==============================
 window.showNotification = function(message, type = 'info', duration = 3000) {
     const notification = document.createElement('div');
-    
-    // Estilos según tipo
+
     const typeStyles = {
         info: 'bg-blue-600',
         success: 'bg-green-600',
         warning: 'bg-yellow-600',
         error: 'bg-red-600'
     };
-    
+
     notification.className = `fixed bottom-4 left-1/2 transform -translate-x-1/2 ${typeStyles[type] || typeStyles.info} text-white px-4 py-2 rounded-lg shadow-lg z-50 transition-opacity duration-300`;
     notification.textContent = message;
     document.body.appendChild(notification);
-    
+
     setTimeout(() => notification.style.opacity = '0', duration);
     setTimeout(() => notification.remove(), duration + 300);
 };
@@ -175,11 +173,11 @@ function applyTheme(theme) {
 function toggleTheme() {
     const currentTheme = window.appState.theme;
     const newTheme = currentTheme === 'light' ? 'dark' : (currentTheme === 'dark' ? 'auto' : 'light');
-    
+
     window.appState.theme = newTheme;
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
-    
+
     showNotification(`Tema: ${newTheme === 'auto' ? 'Automático' : (newTheme === 'dark' ? 'Oscuro' : 'Claro')}`, 'info');
 }
 
@@ -190,18 +188,17 @@ class GeoDetector {
     constructor() {
         this.initialized = false;
     }
-    
+
     async initialize() {
         if (this.initialized) return true;
-        
+
         try {
             const timestamp = Date.now();
-            
-            // Intentar obtener desde caché primero
+
             const cachedCities = CacheManager.get('citiesData');
             const cachedZones = CacheManager.get('zonesData');
             const cachedPartners = CacheManager.get('partnersData');
-            
+
             if (cachedCities && cachedZones && cachedPartners) {
                 window.appState.citiesData = cachedCities;
                 window.appState.zonesData = cachedZones;
@@ -209,27 +206,25 @@ class GeoDetector {
                 this.initialized = true;
                 return true;
             }
-            
-            // Cargar datos en paralelo si no están en caché
+
             const [citiesRes, zonesRes, partnersRes] = await Promise.all([
                 fetch(`${window.ROOT_PATH}data/cities.json?t=${timestamp}`, { cache: 'no-store' }),
                 fetch(`${window.ROOT_PATH}data/zones.json?t=${timestamp}`, { cache: 'no-store' }),
                 fetch(`${window.ROOT_PATH}data/partners.json?t=${timestamp}`, { cache: 'no-store' })
             ]);
-            
+
             if (!citiesRes.ok || !zonesRes.ok || !partnersRes.ok) {
                 throw new Error('No se pudieron cargar los datos geográficos');
             }
-            
+
             window.appState.citiesData = await citiesRes.json();
             window.appState.zonesData = await zonesRes.json();
             window.appState.partnersData = await partnersRes.json();
-            
-            // Guardar en caché
+
             CacheManager.set('citiesData', window.appState.citiesData);
             CacheManager.set('zonesData', window.appState.zonesData);
             CacheManager.set('partnersData', window.appState.partnersData);
-            
+
             this.initialized = true;
             console.log('Datos geográficos cargados correctamente');
             return true;
@@ -238,120 +233,110 @@ class GeoDetector {
             return false;
         }
     }
-    
+
     async detectCity(lat, lng) {
         await this.initialize();
-        
+
         if (!window.appState.citiesData) {
             console.error('No hay datos de ciudades disponibles');
             return null;
         }
 
         const point = turf.point([lng, lat]);
-        
-        // Buscar en qué ciudad está el punto
+
         for (const city of window.appState.citiesData) {
             if (!city?.polygon?.length || city.polygon.length < 3) continue;
-            
+
             let coords = city.polygon.map(p => [Number(p[0]), Number(p[1])]);
-            
-            // Asegurar que el polígono está cerrado
+
             const first = coords[0];
             const last = coords[coords.length - 1];
             if (first[0] !== last[0] || first[1] !== last[1]) {
                 coords = [...coords, first];
             }
-            
+
             const polygon = turf.polygon([coords]);
             if (turf.booleanPointInPolygon(point, polygon)) {
                 console.log(`Ciudad detectada: ${city.name} (id: ${city.id})`);
                 return city;
             }
         }
-        
+
         return null;
     }
-    
+
     async detectZone(lat, lng, cityId = null, tolerance = 0.0001) {
         await this.initialize();
-        
+
         if (!window.appState.zonesData) {
             console.error('No hay datos de zonas disponibles');
             return null;
         }
 
         const point = turf.point([lng, lat]);
-        
-        // Filtrar zonas por ciudad si se especifica
         const zonesToCheck = cityId 
             ? window.appState.zonesData.filter(zone => zone.cityId === cityId)
             : window.appState.zonesData;
 
-        // Buscar en qué zona está el punto
         for (const zone of zonesToCheck) {
             if (!zone?.polygon?.length || zone.polygon.length < 3) continue;
-            
+
             let coords = zone.polygon.map(p => [Number(p[0]), Number(p[1])]).filter(c => !c.some(isNaN));
             if (coords.length < 3) continue;
-            
-            // Asegurar que el polígono está cerrado
+
             const first = coords[0];
             const last = coords[coords.length - 1];
             if (Math.abs(first[0] - last[0]) > tolerance || Math.abs(first[1] - last[1]) > tolerance) {
                 coords = [...coords, first];
             }
-            
+
             const polygon = turf.polygon([coords]);
             if (turf.booleanPointInPolygon(point, polygon)) {
                 console.log(`Zona detectada: ${zone.name} (id: ${zone.id})`);
                 return zone;
             }
         }
-        
-        // Si no está en ninguna zona, intentar asignar la más cercana
+
         let closestZone = null;
         let minDistance = Infinity;
-        
+
         for (const zone of zonesToCheck) {
             if (!zone?.polygon?.length || zone.polygon.length < 3) continue;
-            
+
             const center = turf.center(turf.polygon([zone.polygon]));
             const distance = turf.distance(point, center, { units: 'kilometers' });
-            
+
             if (distance < minDistance) {
                 minDistance = distance;
                 closestZone = zone;
             }
         }
-        
+
         if (closestZone) {
             console.log(`Zona más cercana asignada: ${closestZone.name} (distancia: ${minDistance.toFixed(2)} km)`);
         }
-        
+
         return closestZone;
     }
-    
+
     async detectLocation(lat, lng, cityId = null) {
         await this.initialize();
-        
-        // Detectar ciudad
+
         let city = null;
         if (cityId) {
             city = window.appState.citiesData?.find(c => c.id === cityId);
         }
-        
+
         if (!city) {
             city = await this.detectCity(lat, lng);
         }
-        
-        // Detectar zona
+
         const zone = await this.detectZone(lat, lng, city?.id);
-        
+
         return { city, zone };
     }
 }
 
-// Instancia global del detector
 window.geoDetector = new GeoDetector();
 
 // ======================================================
@@ -377,7 +362,7 @@ window.setupBottomNavigation = function(apartmentId, lang) {
             if (span) span.textContent = t(key) || key;
         }
     });
-    
+
     console.log('Navegación inferior configurada');
 };
 
@@ -391,10 +376,9 @@ async function getApartmentInfo(apartmentId) {
             console.error(`Apartamento "${apartmentId}" no encontrado`);
             return null;
         }
-        
-        // Detectar ciudad y zona
+
         const { city, zone } = await window.geoDetector.detectLocation(apartment.lat, apartment.lng, apartment.cityId);
-        
+
         return {
             ...apartment,
             city,
@@ -413,27 +397,21 @@ async function initializeApp() {
     const params = new URLSearchParams(window.location.search);
     window.appState.apartmentId = params.get('apartment') || 'sol-101';
     window.appState.lang = params.get('lang') || 'es';
-    
-    // Inicializar tema
+
     initTheme();
-    
-    // Escuchar cambios en el sistema de temas
+
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (window.appState.theme === 'auto') {
-            applyTheme('auto');
-        }
+        if (window.appState.theme === 'auto') applyTheme('auto');
     });
 
     try {
-        // Intentar obtener datos desde caché primero
         const cachedApartments = CacheManager.get('apartmentsData');
         const cachedTranslations = CacheManager.get(`translations_${window.appState.lang}`);
-        
+
         if (cachedApartments && cachedTranslations) {
             window.appState.apartmentData = cachedApartments;
             window.appState.translations = cachedTranslations;
         } else {
-            // Cargar datos si no están en caché
             const [apartmentRes, translationsRes] = await Promise.all([
                 fetch(`${window.ROOT_PATH}data/apartments.json`),
                 fetch(`${window.ROOT_PATH}data/${window.appState.lang}.json`)
@@ -443,23 +421,19 @@ async function initializeApp() {
 
             window.appState.apartmentData = await apartmentRes.json();
             window.appState.translations = await translationsRes.json();
-            
-            // Guardar en caché
+
             CacheManager.set('apartmentsData', window.appState.apartmentData);
             CacheManager.set(`translations_${window.appState.lang}`, window.appState.translations);
         }
 
-        // Verificar que el apartamento existe
         if (!window.appState.apartmentData[window.appState.apartmentId]) {
             console.warn(`Apartamento "${window.appState.apartmentId}" no encontrado → usando default`);
             window.appState.apartmentId = 'sol-101';
             if (!window.appState.apartmentData['sol-101']) throw new Error('Default sol-101 no existe');
         }
-        
-        // Inicializar detector geográfico
+
         await window.geoDetector.initialize();
-        
-        // Obtener información completa del apartamento
+
         const apartmentInfo = await getApartmentInfo(window.appState.apartmentId);
         if (apartmentInfo) {
             window.appState.currentCity = apartmentInfo.city;
@@ -469,27 +443,25 @@ async function initializeApp() {
         document.documentElement.lang = window.appState.lang;
         window.appState.initialized = true;
 
-        // Esperar a que renderPage esté disponible
-        const wait = setInterval(() => {
-            if (typeof renderPage === 'function') {
-                clearInterval(wait);
-                renderPage();
-            }
-        }, 100);
-        
-        // Timeout por si renderPage nunca se define
-        setTimeout(() => {
-            clearInterval(wait);
-            if (!window.appState.initialized) {
-                console.error('Timeout esperando a renderPage');
-            }
-        }, 5000);
+        // ✅ Disparar evento indicando que la app está lista
+        window.dispatchEvent(new CustomEvent('app:initialized'));
 
     } catch (error) {
         console.error('Error inicializando app:', error);
         showErrorPage(error);
     }
 }
+
+// ==============================
+// Suscribirse a la inicialización
+// ==============================
+window.addEventListener('app:initialized', () => {
+    if (typeof renderPage === 'function') {
+        renderPage();
+    } else {
+        console.warn('renderPage no está definida aún');
+    }
+});
 
 // ==============================
 // Página de error mejorada

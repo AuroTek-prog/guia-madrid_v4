@@ -199,8 +199,21 @@
 
 <!-- Scripts al final – en orden correcto -->
 <script>
-    // CAMBIO 1: Configuración de ROOT_PATH para GitHub Pages
-    window.ROOT_PATH = '/guia-madrid_v4/';
+    // Configuración dinámica de ROOT_PATH para funcionar en cualquier entorno
+    (function() {
+        const path = window.location.pathname;
+        const isGitHubPages = path.includes('/guia-madrid_v4/');
+        const isNetlify = !path.includes('/guia-madrid_v4/') && window.location.hostname !== 'localhost';
+        
+        if (isGitHubPages) {
+            window.ROOT_PATH = '/guia-madrid_v4/';
+        } else if (isNetlify) {
+            window.ROOT_PATH = '/';
+        } else {
+            // Para desarrollo local
+            window.ROOT_PATH = './';
+        }
+    })();
 </script>
 
 <!-- Primero main.js (define appState y utilidades) -->
