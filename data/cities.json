@@ -1,0 +1,56 @@
+[
+  {
+    "id": "madrid",
+    "name": "Madrid",
+    "country": "España",
+    "polygon": [
+      [-3.889, 40.312],
+      [-3.518, 40.312],
+      [-3.518, 40.564],
+      [-3.889, 40.564],
+      [-3.889, 40.312]
+    ],
+    "tourismInfo": {
+      "description": "Madrid, la vibrante capital de España, es conocida por su rica historia, arte excepcional y vida nocturna animada.",
+      "mustSee": [
+        {
+          "name": "Museo del Prado",
+          "description": "Uno de los museos de arte más importantes del mundo.",
+          "image": "assets/images/tourism/madrid/prado.jpg"
+        },
+        {
+          "name": "Palacio Real",
+          "description": "La residencia oficial de la familia real española.",
+          "image": "assets/images/tourism/madrid/palacio.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": "barcelona",
+    "name": "Barcelona",
+    "country": "España",
+    "polygon": [
+      [2.052, 41.280],
+      [2.229, 41.280],
+      [2.229, 41.450],
+      [2.052, 41.450],
+      [2.052, 41.280]
+    ],
+    "tourismInfo": {
+      "description": "Barcelona es una ciudad cosmopolita con increíble arquitectura modernista, playas y gastronomía de renombre mundial.",
+      "mustSee": [
+        {
+          "name": "Sagrada Familia",
+          "description": "La icónica iglesia inacabada de Antoni Gaudí.",
+          "image": "assets/images/tourism/barcelona/sagrada.jpg"
+        },
+        {
+          "name": "Park Güell",
+          "description": "Un parque público lleno de coloridos mosaicos y diseños de Gaudí.",
+          "image": "assets/images/tourism/barcelona/park.jpg"
+        }
+      ]
+    }
+  }
+]

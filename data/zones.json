@@ -1,0 +1,172 @@
+[
+  {
+    "id": "centro",
+    "name": "Centro",
+    "barrios": ["Palacio", "Embajadores", "Cortes", "Justicia", "Universidad", "Sol"],
+    "polygon": [
+      [-3.720, 40.425],
+      [-3.696, 40.425],
+      [-3.696, 40.405],
+      [-3.713, 40.403],
+      [-3.720, 40.415],
+      [-3.720, 40.425]
+    ]
+  },
+  {
+    "id": "arganzuela",
+    "name": "Arganzuela",
+    "barrios": ["Imperial", "Acacias", "Chopera", "Legazpi", "Delicias", "Palos de Moguer", "Atocha"],
+    "polygon": [
+      [-3.705, 40.413],
+      [-3.687, 40.413],
+      [-3.687, 40.392],
+      [-3.705, 40.392],
+      [-3.705, 40.413]
+    ]
+  },
+  {
+    "id": "retiro",
+    "name": "Retiro",
+    "barrios": ["Pacífico", "Adelfas", "Estrella", "Ibiza", "Jerónimos", "Niño Jesús"],
+    "polygon": [
+      [-3.692, 40.413],
+      [-3.670, 40.413],
+      [-3.670, 40.395],
+      [-3.686, 40.392],
+      [-3.692, 40.405],
+      [-3.692, 40.413]
+    ]
+  },
+  {
+    "id": "salamanca",
+    "name": "Salamanca",
+    "barrios": ["Recoletos", "Goya", "Fuente del Berro", "Guindalera", "Lista", "Castellana"],
+    "polygon": [
+      [-3.680, 40.435],
+      [-3.655, 40.435],
+      [-3.655, 40.412],
+      [-3.680, 40.412],
+      [-3.680, 40.435]
+    ]
+  },
+  {
+    "id": "chamartin",
+    "name": "Chamartín",
+    "barrios": ["El Viso", "Prosperidad", "Ciudad Jardín", "Hispanoamérica", "Nueva España", "Castilla"],
+    "polygon": [
+      [-3.685, 40.455],
+      [-3.655, 40.455],
+      [-3.655, 40.432],
+      [-3.685, 40.432],
+      [-3.685, 40.455]
+    ]
+  },
+  {
+    "id": "tetuan",
+    "name": "Tetuán",
+    "barrios": ["Bellas Vistas", "Cuatro Caminos", "Castillejos", "Almenara", "Valdeacederas", "Berruguete"],
+    "polygon": [
+      [-3.715, 40.466],
+      [-3.686, 40.466],
+      [-3.686, 40.442],
+      [-3.715, 40.442],
+      [-3.715, 40.466]
+    ]
+  },
+  {
+    "id": "chamberi",
+    "name": "Chamberí",
+    "barrios": ["Gaztambide", "Arapiles", "Trafalgar", "Almagro", "Ríos Rosas", "Vallehermoso"],
+    "polygon": [
+      [-3.705, 40.440],
+      [-3.684, 40.440],
+      [-3.684, 40.419],
+      [-3.705, 40.419],
+      [-3.705, 40.440]
+    ]
+  },
+  {
+    "id": "moncloa-aravaca",
+    "name": "Moncloa-Aravaca",
+    "barrios": ["Casa de Campo", "Argüelles", "Ciudad Universitaria", "Valdezarza"],
+    "polygon": [
+      [-3.735, 40.445],
+      [-3.705, 40.445],
+      [-3.705, 40.423],
+      [-3.735, 40.423],
+      [-3.735, 40.445]
+    ]
+  },
+  {
+    "id": "latina",
+    "name": "Latina",
+    "barrios": ["Los Cármenes", "Puerta del Ángel", "Aluche", "Campamento"],
+    "polygon": [
+      [-3.777, 40.417],
+      [-3.726, 40.417],
+      [-3.726, 40.388],
+      [-3.777, 40.388],
+      [-3.777, 40.417]
+    ]
+  },
+  {
+    "id": "carabanchel",
+    "name": "Carabanchel",
+    "barrios": ["San Isidro", "Comillas", "Vista Alegre", "Opañel", "Puerta Bonita", "Buenavista", "Abrantes"],
+    "polygon": [
+      [-3.737, 40.386],
+      [-3.695, 40.386],
+      [-3.695, 40.356],
+      [-3.737, 40.356],
+      [-3.737, 40.386]
+    ]
+  },
+  {
+    "id": "fuencarral-el-pardo",
+    "name": "Fuencarral-El Pardo",
+    "barrios": ["El Pardo", "Montecarmelo", "Valverde", "Mirasierra", "La Paz", "Peñagrande"],
+    "polygon": [
+      [-3.760, 40.503],
+      [-3.697, 40.503],
+      [-3.697, 40.452],
+      [-3.760, 40.452],
+      [-3.760, 40.503]
+    ]
+  },
+  {
+    "id": "hortaleza",
+    "name": "Hortaleza",
+    "barrios": ["Pinar del Rey", "Canillas", "Sanchinarro", "Valdefuentes", "Huerta de la Salud", "Apóstol Santiago"],
+    "polygon": [
+      [-3.664, 40.483],
+      [-3.623, 40.483],
+      [-3.623, 40.452],
+      [-3.664, 40.452],
+      [-3.664, 40.483]
+    ]
+  },
+  {
+    "id": "villaverde",
+    "name": "Villaverde",
+    "barrios": ["San Andrés", "Butarque", "Los Ángeles", "Villaverde Alto", "Villaverde Bajo"],
+    "polygon": [
+      [-3.738, 40.360],
+      [-3.694, 40.360],
+      [-3.694, 40.335],
+      [-3.738, 40.335],
+      [-3.738, 40.360]
+    ]
+  },
+  {
+    "id": "usera",
+    "name": "Usera",
+    "barrios": ["Usera", "Moscardó", "Almendrales", "Orcasitas", "San Fermín"],
+    "polygon": [
+      [-3.724, 40.406],
+      [-3.690, 40.406],
+      [-3.690, 40.383],
+      [-3.724, 40.383],
+      [-3.724, 40.406]
+    ]
+  }
+]
