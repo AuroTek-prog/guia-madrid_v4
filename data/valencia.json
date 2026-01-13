@@ -1,6 +1,6 @@
 {
   "hero": {
-    "image": "assets/images/valencia/valencia-skyline.jpg",
+    "image": "assets/images/tourism/valencia/valencia-skyline.jpg",
     "sloganKey": "hero_slogan",
     "descriptionKey": "hero_description"
   },
@@ -10,84 +10,84 @@
       "nameKey": "city_arts_sciences_name",
       "categoryKey": "art_culture",
       "descriptionKey": "city_arts_sciences_desc",
-      "image": "assets/images/valencia/city-arts-sciences.jpg"
+      "image": "assets/images/tourism/valencia/city-arts-sciences.jpg"
     },
     {
       "id": "valencia-cathedral",
       "nameKey": "valencia_cathedral_name",
       "categoryKey": "historical_landmark",
       "descriptionKey": "valencia_cathedral_desc",
-      "image": "assets/images/valencia/valencia-cathedral.jpg"
+      "image": "assets/images/tourism/valencia/valencia-cathedral.jpg"
     },
     {
       "id": "central-market",
       "nameKey": "central_market_name",
       "categoryKey": "gastronomy",
       "descriptionKey": "central_market_desc",
-      "image": "assets/images/valencia/central-market.jpg"
+      "image": "assets/images/tourism/valencia/central-market.jpg"
     },
     {
       "id": "lonja-de-la-seda",
       "nameKey": "lonja_de_la_seda_name",
       "categoryKey": "historical_landmark",
       "descriptionKey": "lonja_de_la_seda_desc",
-      "image": "assets/images/valencia/lonja-de-la-seda.jpg"
+      "image": "assets/images/tourism/valencia/lonja-de-la-seda.jpg"
     },
     {
       "id": "turia-gardens",
       "nameKey": "turia_gardens_name",
       "categoryKey": "nature_leisure",
       "descriptionKey": "turia_gardens_desc",
-      "image": "assets/images/valencia/turia-gardens.jpg"
+      "image": "assets/images/tourism/valencia/turia-gardens.jpg"
     },
     {
       "id": "malvarrosa-beach",
       "nameKey": "malvarrosa_beach_name",
       "categoryKey": "nature_leisure",
       "descriptionKey": "malvarrosa_beach_desc",
-      "image": "assets/images/valencia/malvarrosa-beach.jpg"
+      "image": "assets/images/tourism/valencia/malvarrosa-beach.jpg"
     },
     {
       "id": "bioparc",
       "nameKey": "bioparc_name",
       "categoryKey": "nature_leisure",
       "descriptionKey": "bioparc_desc",
-      "image": "assets/images/valencia/bioparc.jpg"
+      "image": "assets/images/tourism/valencia/bioparc.jpg"
     },
     {
       "id": "fallas-museum",
       "nameKey": "fallas_museum_name",
       "categoryKey": "art_culture",
       "descriptionKey": "fallas_museum_desc",
-      "image": "assets/images/valencia/fallas-museum.jpg"
+      "image": "assets/images/tourism/valencia/fallas-museum.jpg"
     },
     {
       "id": "torres-de-serranos",
       "nameKey": "torres_de_serranos_name",
       "categoryKey": "historical_landmark",
       "descriptionKey": "torres_de_serranos_desc",
-      "image": "assets/images/valencia/torres-de-serranos.jpg"
+      "image": "assets/images/tourism/valencia/torres-de-serranos.jpg"
     },
     {
       "id": "albufera-natural-park",
       "nameKey": "albufera_natural_park_name",
       "categoryKey": "nature_leisure",
       "descriptionKey": "albufera_natural_park_desc",
-      "image": "assets/images/valencia/albufera-natural-park.jpg"
+      "image": "assets/images/tourism/valencia/albufera-natural-park.jpg"
     },
     {
       "id": "plaza-de-la-virgen",
       "nameKey": "plaza_de_la_virgen_name",
       "categoryKey": "historical_landmark",
       "descriptionKey": "plaza_de_la_virgen_desc",
-      "image": "assets/images/valencia/plaza-de-la-virgen.jpg"
+      "image": "assets/images/tourism/valencia/plaza-de-la-virgen.jpg"
     },
     {
       "id": "ceramics-museum",
       "nameKey": "ceramics_museum_name",
       "categoryKey": "art_culture",
       "descriptionKey": "ceramics_museum_desc",
-      "image": "assets/images/valencia/ceramics-museum.jpg"
+      "image": "assets/images/tourism/valencia/ceramics-museum.jpg"
     }
   ]
 }
