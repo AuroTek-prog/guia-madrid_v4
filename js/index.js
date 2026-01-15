@@ -198,6 +198,7 @@ function renderPage() {
             const p = card.querySelector('p');
 
             if (h4) {
+                h4.textContent = '';
                 h4.textContent = t(titleKey);
                 h4.className = 'font-bold text-lg';
                 console.log(`Título actualizado para ${id}: ${t(titleKey)}`);
@@ -206,6 +207,7 @@ function renderPage() {
             }
 
             if (p) {
+                p.textContent = '';
                 p.textContent = shortDesc;
                 p.className = 'text-sm text-gray-500 dark:text-gray-400';
                 console.log(`Descripción actualizada para ${id}: ${shortDesc}`);
