@@ -141,7 +141,7 @@ function renderPage() {
     document.getElementById('app-version').textContent = t('index.app_version');
 
     // ======================
-    // Navegación - MEJORADA
+    // Navegación - CORREGIDA
     // ======================
     const navConfig = [
         { 
@@ -184,25 +184,54 @@ function renderPage() {
     navConfig.forEach(({ id, titleKey, descKey, icon, shortDesc }) => {
         const card = document.getElementById(id);
         if (card) {
-            // Actualizar el icono
+            // Verificar y actualizar el icono
             const iconElement = card.querySelector('.nav-icon');
-            if (iconElement) iconElement.textContent = icon;
+            if (iconElement) {
+                iconElement.textContent = icon;
+                console.log(`Icono actualizado para ${id}: ${icon}`);
+            } else {
+                console.warn(`No se encontró el elemento .nav-icon para ${id}`);
+            }
             
-            // Actualizar el título y descripción
+            // Verificar y actualizar el título y descripción
             const h4 = card.querySelector('h4');
             const p = card.querySelector('p');
-            if (h4) h4.textContent = t(titleKey);
-            if (p) p.textContent = shortDesc; // Usar la descripción corta en lugar de la traducción
             
-            // Asegurar que la flecha esté visible
+            if (h4) {
+                h4.textContent = t(titleKey);
+                h4.className = 'font-bold text-lg'; // Asegurar que tenga las clases correctas
+                console.log(`Título actualizado para ${id}: ${t(titleKey)}`);
+            } else {
+                console.warn(`No se encontró el elemento h4 para ${id}`);
+            }
+            
+            if (p) {
+                p.textContent = shortDesc; // Usar la descripción corta en lugar de la traducción
+                p.className = 'text-sm text-gray-500 dark:text-gray-400'; // Asegurar que tenga las clases correctas
+                console.log(`Descripción actualizada para ${id}: ${shortDesc}`);
+            } else {
+                console.warn(`No se encontró el elemento p para ${id}`);
+            }
+            
+            // Verificar y asegurar que la flecha esté visible
             const arrow = card.querySelector('.material-symbols-outlined');
-            if (arrow) arrow.textContent = 'arrow_forward';
+            if (arrow) {
+                arrow.textContent = 'arrow_forward';
+                console.log(`Flecha actualizada para ${id}`);
+            } else {
+                console.warn(`No se encontró el elemento .material-symbols-outlined para ${id}`);
+            }
+        } else {
+            console.warn(`No se encontró la tarjeta con id ${id}`);
         }
     });
 
     console.log('Navegación renderizada'); // Log 7
 
-    setupBottomNavigation(window.appState.apartmentId, currentLang);
+    // Solo llamar a setupBottomNavigation si existe
+    if (typeof setupBottomNavigation === 'function') {
+        setupBottomNavigation(window.appState.apartmentId, currentLang);
+    }
 
     console.log('renderPage() completado'); // Log final
 }
@@ -240,12 +269,27 @@ function assignStartButton() {
         startBtn.removeEventListener('click', startGuide);
         startBtn.addEventListener('click', startGuide);
         console.log('Evento click asignado al botón Comenzar guía');
+        return true; // Indicar que se asignó correctamente
     } else {
-        setTimeout(assignStartButton, 500);
+        console.warn('No se encontró el botón start-guide-btn');
+        return false;
     }
 }
 
-assignStartButton();
+// Intentar asignar el botón inmediatamente y si no funciona, reintentar
+if (!assignStartButton()) {
+    let retryCount = 0;
+    const maxRetries = 10;
+    const retryInterval = setInterval(() => {
+        retryCount++;
+        if (assignStartButton() || retryCount >= maxRetries) {
+            clearInterval(retryInterval);
+            if (retryCount >= maxRetries) {
+                console.error('No se pudo asignar el evento al botón después de varios intentos');
+            }
+        }
+    }, 500);
+}
 
 // ==========================================
 // ✅ SINCRONIZACIÓN CORRECTA CON main.js
