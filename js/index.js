@@ -1,4 +1,5 @@
-// js/index.js - Lógica principal de la home - Versión FINAL robusta, segura y con logs
+// js/index.js - Lógica principal de la home - Versión MEJORADA 2026
+// Limpieza forzada + protección contra múltiples renders + logs mejorados
 
 // ==========================================
 // Fallback temporal para t() (por si main.js tarda)
@@ -9,13 +10,17 @@ window.t = window.t || function(key) {
 
 let currentLang = 'es';
 
+// Contador para detectar renders múltiples (útil para depuración)
+window.renderPageCount = window.renderPageCount || 0;
+
 // ==========================================
 // Render principal de la página
 // ==========================================
 function renderPage() {
-    console.log('renderPage() iniciado'); // Log 0
+    window.renderPageCount++;
+    console.log(`renderPage() iniciado - ejecución #${window.renderPageCount}`); // Log 0 mejorado
 
-    // Validación defensiva (NO reintentos aquí)
+    // Validación defensiva
     if (!window.appState?.initialized) {
         console.warn('renderPage llamado antes de app:initialized → abortando');
         return;
@@ -52,9 +57,15 @@ function renderPage() {
         console.log('Hero image asignada:', apt.images.portada); // Log 3
     }
 
-    document.getElementById('hero-subtitle').textContent = t('index.hero_subtitle');
-    document.getElementById('welcome-title').innerHTML =
-        `${t('index.welcome_title')} <br/><span class="font-bold">${t('index.welcome_bold')}</span>`;
+    const subtitleEl = document.getElementById('hero-subtitle');
+    if (subtitleEl) subtitleEl.textContent = t('index.hero_subtitle') || 'Bienvenido';
+
+    const welcomeEl = document.getElementById('welcome-title');
+    if (welcomeEl) {
+        welcomeEl.innerHTML = 
+            `${t('index.welcome_title') || 'Bienvenido'}<br/>` +
+            `<span class="font-bold">${t('index.welcome_bold') || 'a Casa'}</span>`;
+    }
 
     // ======================
     // Tarjeta flotante
@@ -71,9 +82,9 @@ function renderPage() {
     // ======================
     // Selector de idioma
     // ======================
-    document.getElementById('select-lang-title').textContent = t('index.select_language_title');
-    document.getElementById('select-lang-desc').textContent = t('index.select_language_desc');
-    document.getElementById('start-guide-text').textContent = t('index.start_guide');
+    document.getElementById('select-lang-title').textContent = t('index.select_language_title') || 'Selecciona idioma';
+    document.getElementById('select-lang-desc').textContent = t('index.select_language_desc') || 'Elige tu idioma preferido';
+    document.getElementById('start-guide-text').textContent = t('index.start_guide') || 'Comenzar guía';
 
     const languageGrid = document.getElementById('language-grid');
     if (languageGrid) {
@@ -101,7 +112,7 @@ function renderPage() {
             `;
 
             button.onclick = () => {
-                console.log(`Idioma seleccionado: ${lang.code}`); // Log 5
+                console.log(`Idioma seleccionado: ${lang.code}`);
                 changeLanguage(lang.code);
             };
 
@@ -130,110 +141,74 @@ function renderPage() {
             languageGrid.appendChild(button);
         });
 
-        console.log('Botones de idioma renderizados'); // Log 6
+        console.log('Botones de idioma renderizados');
     }
 
     // ======================
     // Footer
     // ======================
     document.getElementById('host-name').textContent =
-        `${t('index.hosted_by')} ${apt.host?.name || 'Anfitrión'}`;
-    document.getElementById('app-version').textContent = t('index.app_version');
+        `${t('index.hosted_by') || 'Alojado por'} ${apt.host?.name || 'Anfitrión'}`;
+    document.getElementById('app-version').textContent = t('index.app_version') || 'Versión de la app';
 
     // ======================
-    // Navegación - CORREGIDA
+    // Navegación - VERSIÓN ROBUSTA CON LIMPIEZA
     // ======================
     const navConfig = [
-        { 
-            id: 'nav-essentials', 
-            titleKey: 'navigation.essentials_title', 
-            descKey: 'navigation.essentials_desc',
-            icon: '🏠',
-            shortDesc: 'WiFi, Acceso y Normas'
-        },
-        { 
-            id: 'nav-devices', 
-            titleKey: 'navigation.devices_title', 
-            descKey: 'navigation.devices_desc',
-            icon: '🔌',
-            shortDesc: 'Controles y aparatos'
-        },
-        { 
-            id: 'nav-recommendations', 
-            titleKey: 'navigation.recommendations_title', 
-            descKey: 'navigation.recommendations_desc',
-            icon: '🗺️',
-            shortDesc: 'Lugares cercanos de interés'
-        },
-        { 
-            id: 'nav-tourism', 
-            titleKey: 'navigation.tourism_title', 
-            descKey: 'navigation.tourism_desc',
-            icon: '🏛️',
-            shortDesc: 'Actividades y atracciones'
-        },
-        { 
-            id: 'nav-contact', 
-            titleKey: 'navigation.contact_title', 
-            descKey: 'navigation.contact_desc',
-            icon: '📞',
-            shortDesc: 'Comunicación con el anfitrión'
-        }
+        { id: 'nav-essentials',    titleKey: 'navigation.essentials_title',    shortDesc: 'WiFi, Acceso y Normas' },
+        { id: 'nav-devices',       titleKey: 'navigation.devices_title',       shortDesc: 'Controles y aparatos' },
+        { id: 'nav-recommendations', titleKey: 'navigation.recommendations_title', shortDesc: 'Lugares cercanos de interés' },
+        { id: 'nav-tourism',       titleKey: 'navigation.tourism_title',       shortDesc: 'Actividades y atracciones' },
+        { id: 'nav-contact',       titleKey: 'navigation.contact_title',       shortDesc: 'Comunicación con el anfitrión' }
     ];
 
-    navConfig.forEach(({ id, titleKey, descKey, icon, shortDesc }) => {
+    navConfig.forEach(({ id, titleKey, shortDesc, icon }) => {
         const card = document.getElementById(id);
-        if (card) {
-            // Verificar y actualizar el icono
-            const iconElement = card.querySelector('.nav-icon');
-            if (iconElement) {
-                iconElement.textContent = icon;
-                console.log(`Icono actualizado para ${id}: ${icon}`);
-            } else {
-                console.warn(`No se encontró el elemento .nav-icon para ${id}`);
-            }
+        if (!card) {
+            console.warn(`Tarjeta no encontrada: ${id}`);
+            return;
+        }
 
-            // Verificar y actualizar el título y descripción
-            const h4 = card.querySelector('h4');
-            const p = card.querySelector('p');
+        // Icono
+        const iconEl = card.querySelector('.nav-icon');
+        if (iconEl) {
+            iconEl.textContent = icon;
+        }
 
-            if (h4) {
-                h4.textContent = t(titleKey);
-                h4.className = 'font-bold text-lg';
-                console.log(`Título actualizado para ${id}: ${t(titleKey)}`);
-            } else {
-                console.warn(`No se encontró el elemento h4 para ${id}`);
-            }
+        // TÍTULO - Limpieza fuerte + asignación
+        const h4 = card.querySelector('h4');
+        if (h4) {
+            const oldText = h4.textContent.trim();
+            h4.textContent = ''; // ← Limpieza explícita primero
+            h4.textContent = t(titleKey) || 'Sección';
+            h4.className = 'font-bold text-lg leading-tight';
+            console.log(`Título LIMPIO → ${id} | Antes: "${oldText}" → Ahora: "${h4.textContent}"`);
+        }
 
-            if (p) {
-                p.textContent = shortDesc;
-                p.className = 'text-sm text-gray-500 dark:text-gray-400';
-                console.log(`Descripción actualizada para ${id}: ${shortDesc}`);
-            } else {
-                console.warn(`No se encontró el elemento p para ${id}`);
-            }
+        // DESCRIPCIÓN - Limpieza fuerte + asignación
+        const p = card.querySelector('p');
+        if (p) {
+            const oldDesc = p.textContent.trim();
+            p.textContent = ''; // ← Limpieza explícita primero
+            p.textContent = shortDesc || 'Información disponible';
+            p.className = 'text-sm text-gray-500 dark:text-gray-400 mt-0.5 leading-snug';
+            console.log(`Descripción LIMPIA → ${id} | Antes: "${oldDesc}" → Ahora: "${p.textContent}"`);
+        }
 
-            // Verificar y asegurar que la flecha esté visible SOLO en el elemento .nav-arrow
-            const arrow = card.querySelector('.nav-arrow');
-            if (arrow) {
-                arrow.textContent = 'arrow_forward';
-                console.log(`Flecha actualizada para ${id}`);
-            } else {
-                console.warn(`No se encontró el elemento .nav-arrow para ${id}`);
-            }
-        } else {
-            console.warn(`No se encontró la tarjeta con id ${id}`);
+        // Flecha
+        const arrow = card.querySelector('.nav-arrow');
+        if (arrow) {
+            arrow.textContent = 'arrow_forward';
         }
     });
 
-    console.log('Navegación renderizada'); // Log 7
+    console.log('Navegación renderizada correctamente');
 
-    // Solo llamar a setupBottomNavigation si existe
     if (typeof setupBottomNavigation === 'function') {
         setupBottomNavigation(window.appState.apartmentId, currentLang);
     }
 
-    console.log('renderPage() completado'); // Log final
+    console.log('renderPage() completado');
 }
 
 // ==========================================
@@ -243,11 +218,8 @@ function startGuide() {
     console.log('¡Botón Comenzar guía pulsado!');
     console.log('Estado actual:', window.appState);
 
-    const langSection = document.getElementById('language-selector-section');
-    const navSection = document.getElementById('navigation-section');
-
-    if (langSection) langSection.classList.add('hidden');
-    if (navSection) navSection.classList.remove('hidden');
+    document.getElementById('language-selector-section')?.classList.add('hidden');
+    document.getElementById('navigation-section')?.classList.remove('hidden');
 }
 
 // ==========================================
@@ -266,17 +238,16 @@ function changeLanguage(lang) {
 function assignStartButton() {
     const startBtn = document.getElementById('start-guide-btn');
     if (startBtn) {
-        startBtn.removeEventListener('click', startGuide);
+        startBtn.removeEventListener('click', startGuide); // Evita duplicados
         startBtn.addEventListener('click', startGuide);
         console.log('Evento click asignado al botón Comenzar guía');
-        return true; // Indicar que se asignó correctamente
-    } else {
-        console.warn('No se encontró el botón start-guide-btn');
-        return false;
+        return true;
     }
+    console.warn('No se encontró el botón start-guide-btn');
+    return false;
 }
 
-// Intentar asignar el botón inmediatamente y si no funciona, reintentar
+// Reintentos para asignar botón
 if (!assignStartButton()) {
     let retryCount = 0;
     const maxRetries = 10;
@@ -285,14 +256,14 @@ if (!assignStartButton()) {
         if (assignStartButton() || retryCount >= maxRetries) {
             clearInterval(retryInterval);
             if (retryCount >= maxRetries) {
-                console.error('No se pudo asignar el evento al botón después de varios intentos');
+                console.error('No se pudo asignar evento al botón tras varios intentos');
             }
         }
     }, 500);
 }
 
 // ==========================================
-// ✅ SINCRONIZACIÓN CORRECTA CON main.js
+// SINCRONIZACIÓN CON main.js
 // ==========================================
 window.addEventListener('app:initialized', () => {
     console.log('Evento app:initialized recibido en index.js');

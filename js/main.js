@@ -141,10 +141,18 @@ window.showNotification = function(message, type = 'info', duration = 3000) {
 // Volver atrás preservando params
 // ==============================
 window.goBack = function() {
-    const params = new URLSearchParams(window.location.search);
-    const apartmentId = params.get('apartment') || 'sol-101';
-    const lang = params.get('lang') || 'es';
-    window.location.href = `${window.ROOT_PATH}index.html?apartment=${encodeURIComponent(apartmentId)}&lang=${encodeURIComponent(lang)}`;
+    // Opción profesional: primero intenta volver con el historial
+    if (window.history.length > 1) {
+        window.history.back();
+        console.log('goBack: Usando window.history.back()');
+    } else {
+        // Si no hay historial, redirige al index con los parámetros actuales
+        const params = new URLSearchParams(window.location.search);
+        const apartmentId = params.get('apartment') || 'sol-101';
+        const lang = params.get('lang') || 'es';
+        window.location.href = `${window.ROOT_PATH}index.html?apartment=${encodeURIComponent(apartmentId)}&lang=${encodeURIComponent(lang)}`;
+        console.log('goBack: Redirigiendo manualmente al index con parámetros');
+    }
 };
 
 // ==============================
