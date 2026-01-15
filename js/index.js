@@ -141,23 +141,62 @@ function renderPage() {
     document.getElementById('app-version').textContent = t('index.app_version');
 
     // ======================
-    // Navegación
+    // Navegación - MEJORADA
     // ======================
     const navConfig = [
-        { id: 'nav-essentials', titleKey: 'navigation.essentials_title', descKey: 'navigation.essentials_desc' },
-        { id: 'nav-devices', titleKey: 'navigation.devices_title', descKey: 'navigation.devices_desc' },
-        { id: 'nav-recommendations', titleKey: 'navigation.recommendations_title', descKey: 'navigation.recommendations_desc' },
-        { id: 'nav-tourism', titleKey: 'navigation.tourism_title', descKey: 'navigation.tourism_desc' },
-        { id: 'nav-contact', titleKey: 'navigation.contact_title', descKey: 'navigation.contact_desc' }
+        { 
+            id: 'nav-essentials', 
+            titleKey: 'navigation.essentials_title', 
+            descKey: 'navigation.essentials_desc',
+            icon: '🏠',
+            shortDesc: 'WiFi, Acceso y Normas'
+        },
+        { 
+            id: 'nav-devices', 
+            titleKey: 'navigation.devices_title', 
+            descKey: 'navigation.devices_desc',
+            icon: '🔌',
+            shortDesc: 'Controles y aparatos'
+        },
+        { 
+            id: 'nav-recommendations', 
+            titleKey: 'navigation.recommendations_title', 
+            descKey: 'navigation.recommendations_desc',
+            icon: '🗺️',
+            shortDesc: 'Lugares cercanos de interés'
+        },
+        { 
+            id: 'nav-tourism', 
+            titleKey: 'navigation.tourism_title', 
+            descKey: 'navigation.tourism_desc',
+            icon: '🏛️',
+            shortDesc: 'Actividades y atracciones'
+        },
+        { 
+            id: 'nav-contact', 
+            titleKey: 'navigation.contact_title', 
+            descKey: 'navigation.contact_desc',
+            icon: '📞',
+            shortDesc: 'Comunicación con el anfitrión'
+        }
     ];
 
-    navConfig.forEach(({ id, titleKey, descKey }) => {
+    navConfig.forEach(({ id, titleKey, descKey, icon, shortDesc }) => {
         const card = document.getElementById(id);
         if (card) {
+            // Actualizar el icono
+            const iconElement = card.querySelector('.nav-icon');
+            if (iconElement) iconElement.textContent = icon;
+            
+            // Actualizar el título y descripción
             const h4 = card.querySelector('h4');
             const p = card.querySelector('p');
             if (h4) h4.textContent = t(titleKey);
-            if (p) p.textContent = t(descKey);
+            if (p) p.textContent = shortDesc; // Usar la descripción corta en lugar de la traducción
+            
+            // Asegurar que la flecha esté visible
+            const arrow = card.querySelector('.material-symbols-outlined');
+            if (arrow) arrow.textContent = 'arrow_forward';
         }
     });
 
