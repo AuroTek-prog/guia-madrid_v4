@@ -34,18 +34,23 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* Redefinir completamente el nav-card con tamaños controlados */
         .nav-card {
             display: flex;
             align-items: center;
-            padding: 1.25rem;
-            border-radius: 1rem;
+            padding: 0.875rem 1rem; /* Reducir padding */
+            border-radius: 0.75rem;
             background: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
+            min-height: auto !important; /* Eliminar altura mínima */
+            height: auto !important; /* Altura automática */
+            max-height: none !important; /* Sin límite de altura máxima */
         }
+        
         .nav-card::before {
             content: '';
             position: absolute;
@@ -55,58 +60,98 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+        
         .nav-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            transform: translateY(-2px); /* Reducir el efecto hover */
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
         }
+        
         .nav-card:hover::before { opacity: 1; }
 
+        /* Reducir el tamaño del icono */
         .nav-icon {
-            width: 3.5rem; height: 3.5rem;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 1rem;
-            font-size: 1.75rem;
-            margin-right: 1rem;
+            width: 2.75rem !important; /* Reducir de 3.5rem a 2.75rem */
+            height: 2.75rem !important;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border-radius: 0.75rem;
+            font-size: 1.25rem !important; /* Reducir de 1.75rem */
+            margin-right: 0.875rem !important; /* Reducir margen */
             background: linear-gradient(135deg, rgba(17,82,212,0.1) 0%, rgba(17,82,212,0.05) 100%);
             transition: all 0.3s ease;
+            flex-shrink: 0; /* Evitar que se encoja */
         }
+        
         .nav-card:hover .nav-icon {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Reducir efecto de escala */
             background: linear-gradient(135deg, rgba(17,82,212,0.2) 0%, rgba(17,82,212,0.1) 100%);
         }
+        
         .nav-card .material-symbols-outlined {
             color: #1152d4;
             transition: transform 0.3s ease;
-        }
-        .nav-card:hover .material-symbols-outlined { transform: translateX(4px); }
-
-        /* Corrección para los títulos y descripciones de las tarjetas de navegación */
-        .nav-card h4 {
-            font-size: 1.125rem !important; /* 18px - equivalente a text-lg */
-            line-height: 1.5rem !important;
-            margin: 0 !important;
-            padding: 0 !important;
+            font-size: 1.25rem !important; /* Controlar tamaño del icono */
         }
         
-        .nav-card p {
-            font-size: 0.875rem !important; /* 14px - equivalente a text-sm */
-            line-height: 1.25rem !important;
-            margin: 0 !important;
-            padding: 0 !important;
+        .nav-card:hover .material-symbols-outlined { 
+            transform: translateX(2px); /* Reducir efecto de traslación */
         }
 
+        /* Controlar el contenedor del texto */
+        .nav-card .flex-1 {
+            flex: 1;
+            min-width: 0; /* Permitir que el texto se ajuste */
+        }
+
+        /* Estilos específicos para el texto con mayor especificidad */
+        .nav-card > div.flex-1 > h4 {
+            font-size: 1rem !important; /* 16px - tamaño base */
+            font-weight: 600 !important;
+            line-height: 1.25 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            color: #0d121b !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .nav-card > div.flex-1 > p {
+            font-size: 0.75rem !important; /* 12px - más pequeño */
+            line-height: 1.2 !important;
+            margin: 0.125rem 0 0 0 !important; /* Pequeño margen superior */
+            padding: 0 !important;
+            color: #6b7280 !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Estilos para modo oscuro */
         .dark .nav-card {
             background: #1a2233;
             border-color: rgba(255,255,255,0.1);
         }
+        
         .dark .nav-card::before {
             background: linear-gradient(135deg, rgba(17,82,212,0.15) 0%, rgba(17,82,212,0) 100%);
         }
+        
         .dark .nav-icon {
             background: linear-gradient(135deg, rgba(17,82,212,0.15) 0%, rgba(17,82,212,0.05) 100%);
         }
+        
         .dark .nav-card:hover .nav-icon {
             background: linear-gradient(135deg, rgba(17,82,212,0.25) 0%, rgba(17,82,212,0.1) 100%);
+        }
+        
+        .dark .nav-card > div.flex-1 > h4 {
+            color: white !important;
+        }
+        
+        .dark .nav-card > div.flex-1 > p {
+            color: #9ca3af !important;
         }
 
         body { min-height: max(884px, 100dvh); }
@@ -167,40 +212,40 @@
         <a id="nav-essentials" href="pages/essentials.html" class="nav-card">
             <span class="nav-icon">🏠</span>
             <div class="flex-1">
-                <h4 class="font-bold">Cargando...</h4>
-                <p class="text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4>Cargando...</h4>
+                <p>Cargando...</p>
             </div>
             <span class="material-symbols-outlined">arrow_forward</span>
         </a>
         <a id="nav-devices" href="pages/devices.html" class="nav-card">
             <span class="nav-icon">🔌</span>
             <div class="flex-1">
-                <h4 class="font-bold">Cargando...</h4>
-                <p class="text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4>Cargando...</h4>
+                <p>Cargando...</p>
             </div>
             <span class="material-symbols-outlined">arrow_forward</span>
         </a>
         <a id="nav-recommendations" href="pages/recommendations.html" class="nav-card">
             <span class="nav-icon">🗺️</span>
             <div class="flex-1">
-                <h4 class="font-bold">Cargando...</h4>
-                <p class="text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4>Cargando...</h4>
+                <p>Cargando...</p>
             </div>
             <span class="material-symbols-outlined">arrow_forward</span>
         </a>
         <a id="nav-tourism" href="pages/tourism.html" class="nav-card">
             <span class="nav-icon">🏛️</span>
             <div class="flex-1">
-                <h4 class="font-bold">Cargando...</h4>
-                <p class="text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4>Cargando...</h4>
+                <p>Cargando...</p>
             </div>
             <span class="material-symbols-outlined">arrow_forward</span>
         </a>
         <a id="nav-contact" href="pages/contact.html" class="nav-card">
             <span class="nav-icon">📞</span>
             <div class="flex-1">
-                <h4 class="font-bold">Cargando...</h4>
-                <p class="text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4>Cargando...</h4>
+                <p>Cargando...</p>
             </div>
             <span class="material-symbols-outlined">arrow_forward</span>
         </a>
