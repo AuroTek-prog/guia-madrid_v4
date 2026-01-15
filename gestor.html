@@ -250,7 +250,7 @@
                     ? `url(${apt.images.portada})` 
                     : 'url(https://via.placeholder.com/800x500/1152d4/ffffff?text=Sin+Foto)';
 
-                const guideUrl = `https://aurotek-prog.github.io/guia-madrid_v3/?apartment=${apt.slug}`;
+                const guideUrl = `https://aurotek-prog.github.io/guia-madrid_v4/?apartment=${apt.slug}`;
                 const hasRaixer = apt.raixerDevices && apt.raixerDevices.length > 0;
                 const zoneName = getZoneName(apt.zone);
 
@@ -329,6 +329,7 @@
                 zoneFilter.appendChild(option);
             });
         }
+        
 
         function filterApartments() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
