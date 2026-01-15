@@ -192,34 +192,34 @@ function renderPage() {
             } else {
                 console.warn(`No se encontró el elemento .nav-icon para ${id}`);
             }
-            
+
             // Verificar y actualizar el título y descripción
             const h4 = card.querySelector('h4');
             const p = card.querySelector('p');
-            
+
             if (h4) {
                 h4.textContent = t(titleKey);
-                h4.className = 'font-bold text-lg'; // Asegurar que tenga las clases correctas
+                h4.className = 'font-bold text-lg';
                 console.log(`Título actualizado para ${id}: ${t(titleKey)}`);
             } else {
                 console.warn(`No se encontró el elemento h4 para ${id}`);
             }
-            
+
             if (p) {
-                p.textContent = shortDesc; // Usar la descripción corta en lugar de la traducción
-                p.className = 'text-sm text-gray-500 dark:text-gray-400'; // Asegurar que tenga las clases correctas
+                p.textContent = shortDesc;
+                p.className = 'text-sm text-gray-500 dark:text-gray-400';
                 console.log(`Descripción actualizada para ${id}: ${shortDesc}`);
             } else {
                 console.warn(`No se encontró el elemento p para ${id}`);
             }
-            
-            // Verificar y asegurar que la flecha esté visible
-            const arrow = card.querySelector('.material-symbols-outlined');
+
+            // Verificar y asegurar que la flecha esté visible SOLO en el elemento .nav-arrow
+            const arrow = card.querySelector('.nav-arrow');
             if (arrow) {
                 arrow.textContent = 'arrow_forward';
                 console.log(`Flecha actualizada para ${id}`);
             } else {
-                console.warn(`No se encontró el elemento .material-symbols-outlined para ${id}`);
+                console.warn(`No se encontró el elemento .nav-arrow para ${id}`);
             }
         } else {
             console.warn(`No se encontró la tarjeta con id ${id}`);
