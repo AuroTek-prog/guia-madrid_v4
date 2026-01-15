@@ -141,7 +141,7 @@ function renderPage() {
     document.getElementById('app-version').textContent = t('index.app_version');
 
     // ======================
-    // Navegación
+    // Navegación - CON CONTROL DE ESTILOS
     // ======================
     const navConfig = [
         { id: 'nav-essentials', titleKey: 'navigation.essentials_title', descKey: 'navigation.essentials_desc' },
@@ -156,12 +156,54 @@ function renderPage() {
         if (card) {
             const h4 = card.querySelector('h4');
             const p = card.querySelector('p');
-            if (h4) h4.textContent = t(titleKey);
-            if (p) p.textContent = t(descKey);
+            
+            if (h4) {
+                h4.textContent = t(titleKey);
+                // Forzar estilos directamente desde JavaScript
+                h4.style.fontSize = '1rem !important';
+                h4.style.fontWeight = '600 !important';
+                h4.style.lineHeight = '1.25 !important';
+                h4.style.margin = '0 !important';
+                h4.style.padding = '0 !important';
+                h4.style.color = '#0d121b';
+                
+                // Asegurar que no tenga clases que puedan afectar el tamaño
+                h4.className = 'font-bold';
+                
+                // Para modo oscuro
+                if (document.body.classList.contains('dark')) {
+                    h4.style.color = 'white !important';
+                }
+            }
+            
+            if (p) {
+                p.textContent = t(descKey);
+                // Forzar estilos directamente desde JavaScript
+                p.style.fontSize = '0.75rem !important';
+                p.style.lineHeight = '1.2 !important';
+                p.style.margin = '0.125rem 0 0 0 !important';
+                p.style.padding = '0 !important';
+                p.style.color = '#6b7280';
+                
+                // Asegurar que no tenga clases que puedan afectar el tamaño
+                p.className = '';
+                
+                // Para modo oscuro
+                if (document.body.classList.contains('dark')) {
+                    p.style.color = '#9ca3af !important';
+                }
+            }
+            
+            // Asegurar que el contenedor del texto tenga los estilos correctos
+            const textContainer = card.querySelector('.flex-1');
+            if (textContainer) {
+                textContainer.style.flex = '1';
+                textContainer.style.minWidth = '0';
+            }
         }
     });
 
-    console.log('Navegación renderizada'); // Log 7
+    console.log('Navegación renderizada con estilos controlados'); // Log 7
 
     setupBottomNavigation(window.appState.apartmentId, currentLang);
 
@@ -179,7 +221,50 @@ function startGuide() {
     const navSection = document.getElementById('navigation-section');
 
     if (langSection) langSection.classList.add('hidden');
-    if (navSection) navSection.classList.remove('hidden');
+    if (navSection) {
+        navSection.classList.remove('hidden');
+        
+        // Forzar estilos en las tarjetas de navegación después de mostrarlas
+        setTimeout(() => {
+            document.querySelectorAll('.nav-card').forEach(card => {
+                const h4 = card.querySelector('h4');
+                const p = card.querySelector('p');
+                
+                if (h4) {
+                    h4.style.fontSize = '1rem !important';
+                    h4.style.fontWeight = '600 !important';
+                    h4.style.lineHeight = '1.25 !important';
+                    h4.style.margin = '0 !important';
+                    h4.style.padding = '0 !important';
+                    h4.style.color = '#0d121b';
+                    h4.className = 'font-bold';
+                    
+                    if (document.body.classList.contains('dark')) {
+                        h4.style.color = 'white !important';
+                    }
+                }
+                
+                if (p) {
+                    p.style.fontSize = '0.75rem !important';
+                    p.style.lineHeight = '1.2 !important';
+                    p.style.margin = '0.125rem 0 0 0 !important';
+                    p.style.padding = '0 !important';
+                    p.style.color = '#6b7280';
+                    p.className = '';
+                    
+                    if (document.body.classList.contains('dark')) {
+                        p.style.color = '#9ca3af !important';
+                    }
+                }
+                
+                const textContainer = card.querySelector('.flex-1');
+                if (textContainer) {
+                    textContainer.style.flex = '1';
+                    textContainer.style.minWidth = '0';
+                }
+            });
+        }, 100);
+    }
 }
 
 // ==========================================
