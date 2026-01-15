@@ -78,22 +78,21 @@
         .nav-card .material-symbols-outlined {
             color: #1152d4;
             transition: transform 0.3s ease;
-            margin-left: auto; /* Asegura que la flecha esté a la derecha */
+            margin-left: auto;
         }
         .nav-card:hover .material-symbols-outlined { 
             transform: translateX(4px); 
         }
         
-        /* Mejoras para el texto de las tarjetas de navegación */
         .nav-card h4 {
-            font-size: 1.125rem; /* 18px - tamaño adecuado para títulos */
-            line-height: 1.5rem; /* 24px */
-            margin-bottom: 0.25rem; /* Espacio entre título y descripción */
+            font-size: 1.125rem;
+            line-height: 1.5rem;
+            margin-bottom: 0.25rem;
         }
         .nav-card p {
-            font-size: 0.875rem; /* 14px - tamaño más pequeño para descripciones */
-            line-height: 1.25rem; /* 20px */
-            color: #64748b; /* Color más suave para descripciones */
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: #64748b;
             max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -114,10 +113,10 @@
             background: linear-gradient(135deg, rgba(17,82,212,0.25) 0%, rgba(17,82,212,0.1) 100%);
         }
         .dark .nav-card .material-symbols-outlined {
-            color: #60a5fa; /* azul-400 para modo oscuro */
+            color: #60a5fa;
         }
         .dark .nav-card p {
-            color: #94a3b8; /* Color más suave para descripciones en modo oscuro */
+            color: #94a3b8;
         }
 
         body { min-height: max(884px, 100dvh); }
@@ -178,42 +177,46 @@
         <a id="nav-essentials" href="pages/essentials.html" class="nav-card">
             <span class="nav-icon">🏠</span>
             <div class="flex-1">
-                <h4 class="font-bold text-lg">Cargando...</h4>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4></h4>
+                <p></p>
             </div>
-                <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
+            <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
         </a>
+
         <a id="nav-devices" href="pages/devices.html" class="nav-card">
             <span class="nav-icon">🔌</span>
             <div class="flex-1">
-                <h4 class="font-bold text-lg">Cargando...</h4>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4></h4>
+                <p></p>
             </div>
-                <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
+            <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
         </a>
+
         <a id="nav-recommendations" href="pages/recommendations.html" class="nav-card">
             <span class="nav-icon">🗺️</span>
             <div class="flex-1">
-                <h4 class="font-bold text-lg">Cargando...</h4>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4></h4>
+                <p></p>
             </div>
-                <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
+            <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
         </a>
+
         <a id="nav-tourism" href="pages/tourism.html" class="nav-card">
             <span class="nav-icon">🏛️</span>
             <div class="flex-1">
-                <h4 class="font-bold text-lg">Cargando...</h4>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4></h4>
+                <p></p>
             </div>
-                <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
+            <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
         </a>
+
         <a id="nav-contact" href="pages/contact.html" class="nav-card">
             <span class="nav-icon">📞</span>
             <div class="flex-1">
-                <h4 class="font-bold text-lg">Cargando...</h4>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Cargando...</p>
+                <h4></h4>
+                <p></p>
             </div>
-                <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
+            <span class="material-symbols-outlined nav-arrow" style="font-size: 1.5rem;">arrow_forward</span>
         </a>
     </div>
 
@@ -225,7 +228,7 @@
 
 <!-- Scripts al final – en orden correcto -->
 <script>
-    // Configuración dinámica de ROOT_PATH para funcionar en cualquier entorno
+    // Configuración dinámica de ROOT_PATH
     (function() {
         const path = window.location.pathname;
         const isGitHubPages = path.includes('/guia-madrid_v4/');
@@ -236,16 +239,12 @@
         } else if (isNetlify) {
             window.ROOT_PATH = '/';
         } else {
-            // Para desarrollo local
             window.ROOT_PATH = './';
         }
     })();
 </script>
 
-<!-- Primero main.js (define appState y utilidades) -->
 <script src="js/main.js" defer></script>
-
-<!-- Después index.js (usa appState y renderiza la página) -->
 <script src="js/index.js" defer></script>
 
 </body>
