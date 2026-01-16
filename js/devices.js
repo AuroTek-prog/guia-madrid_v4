@@ -21,6 +21,7 @@ function renderPage() {
 
     const deviceIcons = {
         heating: 'thermostat',
+        climatizacion: 'thermostat',
         hob: 'countertops',
         ac: 'ac_unit',
         washing_machine: 'local_laundry_service',
