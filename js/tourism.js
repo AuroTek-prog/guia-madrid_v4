@@ -1,201 +1,92 @@
-// js/tourism.js - Versión MEJORADA con soporte multi-ciudad
+function renderPage() {
+    // Esta función necesita datos adicionales de madrid.json
+    fetch(`${window.ROOT_PATH}data/madrid.json`)
+        .then(response => response.json())
+        .then(madridData => {
+            // Actualizar textos estáticos
+            document.title = t('tourism.title');
+            document.getElementById('page-title').textContent = t('tourism.title');
+            document.getElementById('hero-category').textContent = t('tourism.hero_slogan');
+            document.getElementById('hero-headline').textContent = 'Madrid Te Espera';
+            document.getElementById('hero-description').textContent = t('tourism.hero_description');
+            document.getElementById('experiences-headline').textContent = t('tourism.experiences_title');
+            document.getElementById('experiences-subtitle').textContent = t('tourism.experiences_subtitle');
+            document.getElementById('fab-text').textContent = t('tourism.map_view');
+            
+            // Usamos window.ROOT_PATH para construir la ruta completa y correcta
+            document.querySelector('#hero-image .bg-cover').style.backgroundImage = `url('${window.ROOT_PATH}${madridData.hero.image}')`;
+            
+            // Renderizar el feed de experiencias
+            const feedContainer = document.getElementById('experiences-feed');
+            feedContainer.innerHTML = ''; // Limpiar contenido previo
 
-// Función para obtener la información del apartamento con ciudad
-async function getApartmentWithCity() {
-    try {
-        // Obtener datos del apartamento
-        const apartmentId = window.appState.apartmentId;
-        const apt = window.appState.apartmentData?.[apartmentId];
-        
-        if (!apt) {
-            console.error('No hay datos del apartamento disponibles');
-            return null;
-        }
+            madridData.experiences.forEach((exp, index) => {
+                const placeName = t(`tourism.places.${exp.nameKey}`);
 
-        // Detectar ciudad (primero intentar usar cityId del apartamento)
-        let city = null;
-        if (apt.cityId) {
-            // Si tenemos el detector de zonas disponible, úsalo
-            if (window.zoneDetector) {
-                await window.zoneDetector.initialize();
-                city = window.zoneDetector.citiesData?.find(c => c.id === apt.cityId);
-            } else {
-                // Fallback: cargar directamente el archivo de ciudades
-                try {
-                    const citiesResponse = await fetch(`${window.ROOT_PATH}data/cities.json`);
-                    const citiesData = await citiesResponse.json();
-                    city = citiesData.find(c => c.id === apt.cityId);
-                } catch (error) {
-                    console.error('Error cargando ciudades:', error);
-                }
-            }
-        }
-        
-        // Si no hay cityId o no se encuentra la ciudad, detectar por coordenadas
-        if (!city && window.zoneDetector) {
-            city = await window.zoneDetector.detectCity(apt.lat, apt.lng);
-        }
-        
-        // Si aún no hay ciudad, usar Madrid como fallback
-        if (!city) {
-            console.warn('No se pudo detectar la ciudad, usando Madrid como fallback');
-            city = { id: 'madrid', name: 'Madrid', lat: 40.4168, lng: -3.7038 };
-        }
-        
-        return {
-            ...apt,
-            city
-        };
-    } catch (error) {
-        console.error('Error obteniendo información del apartamento:', error);
-        return null;
-    }
-}
-
-// Función para cargar los datos de una ciudad específica
-async function loadCityData(cityId) {
-    try {
-        const response = await fetch(`${window.ROOT_PATH}data/${cityId}.json`);
-        if (!response.ok) {
-            throw new Error(`No se pudo cargar el archivo ${cityId}.json`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(`Error cargando datos de ${cityId}:`, error);
-        
-        // Fallback: intentar cargar Madrid si falla otra ciudad
-        if (cityId !== 'madrid') {
-            console.log('Intentando cargar datos de Madrid como fallback...');
-            try {
-                const response = await fetch(`${window.ROOT_PATH}data/madrid.json`);
-                if (response.ok) {
-                    return await response.json();
-                }
-            } catch (fallbackError) {
-                console.error('Error cargando datos de Madrid como fallback:', fallbackError);
-            }
-        }
-        
-        return null;
-    }
-}
-
-// Función para renderizar una tarjeta de experiencia
-function renderExperienceCard(exp, index, cityName) {
-    const placeName = t(`tourism.places.${exp.nameKey}`);
-    const feedContainer = document.getElementById('experiences-feed');
-    
-    const card = document.createElement('div');
-    card.className = 'experience-card';
-    card.innerHTML = `
-        <div class="flex flex-col items-stretch justify-start rounded-2xl shadow-xl bg-white dark:bg-surface-dark overflow-hidden transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1 ring-1 ring-black/5 dark:ring-white/5">
-            <div class="relative w-full aspect-[4/5] sm:aspect-video bg-center bg-no-repeat bg-cover" style="background-image: url('${window.ROOT_PATH}${exp.image}');">
-                <div class="absolute top-4 left-4">
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-sm uppercase tracking-wider">
-                        ${t(`tourism.categories.${exp.categoryKey}`)}
-                    </span>
-                </div>
-            </div>
-            <div class="flex w-full grow flex-col items-start justify-center gap-3 p-6">
-                <div class="flex flex-col gap-2 w-full">
-                    <div class="flex justify-between items-start w-full">
-                        <p class="place-title text-gray-900 dark:text-white text-2xl font-bold leading-tight tracking-tight">${placeName}</p>
-                        <span class="material-symbols-outlined text-gray-400 dark:text-gray-500" style="font-size: 20px;">favorite_border</span>
+                const card = document.createElement('div');
+                card.className = 'experience-card';
+                card.innerHTML = `
+                    <div class="flex flex-col items-stretch justify-start rounded-2xl shadow-xl bg-white dark:bg-surface-dark overflow-hidden transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1 ring-1 ring-black/5 dark:ring-white/5">
+                        <div class="relative w-full aspect-[4/5] sm:aspect-video bg-center bg-no-repeat bg-cover" style="background-image: url('${window.ROOT_PATH}${exp.image}');">
+                            <div class="absolute top-4 left-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-sm uppercase tracking-wider">
+                                    ${t(`tourism.categories.${exp.categoryKey}`)}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex w-full grow flex-col items-start justify-center gap-3 p-6">
+                            <div class="flex flex-col gap-2 w-full">
+                                <div class="flex justify-between items-start w-full">
+                                    <p class="place-title text-gray-900 dark:text-white text-2xl font-bold leading-tight tracking-tight">${placeName}</p>
+                                    <span class="material-symbols-outlined text-gray-400 dark:text-gray-500" style="font-size: 20px;">favorite_border</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-base font-light leading-relaxed line-clamp-2">
+                                    ${t(`tourism.places.${exp.descriptionKey}`)}
+                                </p>
+                            </div>
+                            <div class="w-full pt-2">
+                                <button id="details-btn-${index}" class="details-btn flex w-full items-center justify-center rounded-lg h-12 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 text-sm font-semibold tracking-wide transition-colors gap-2">
+                                    <span>${t('tourism.explore_details')}</span>
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-base font-light leading-relaxed line-clamp-2">
-                        ${t(`tourism.places.${exp.descriptionKey}`)}
-                    </p>
-                </div>
-                <div class="w-full pt-2">
-                    <button id="details-btn-${index}" class="details-btn flex w-full items-center justify-center rounded-lg h-12 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 text-sm font-semibold tracking-wide transition-colors gap-2">
-                        <span>${t('tourism.explore_details')}</span>
-                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    feedContainer.appendChild(card);
+                `;
+                feedContainer.appendChild(card);
 
-    // Adjuntar el evento directamente al botón
-    const detailsButton = document.getElementById(`details-btn-${index}`);
-    if (detailsButton) {
-        detailsButton.addEventListener('click', function() {
-            console.log('¡CLIC EN BOTÓN DETECTADO!');
+                // Adjuntar el evento directamente al botón
+                const detailsButton = document.getElementById(`details-btn-${index}`);
+                if (detailsButton) {
+                    detailsButton.addEventListener('click', function() {
+                        console.log('¡CLIC EN BOTÓN DETECTADO!');
+                        
+                        // Obtenemos el nombre del lugar desde el texto del título en la misma tarjeta
+                        const placeTitle = card.querySelector('.place-title').textContent.trim();
+                        
+                        console.log(`Buscando: ${placeTitle}`);
+                        
+                        const searchQuery = encodeURIComponent(`${placeTitle} Madrid`);
+                        const searchUrl = `https://www.google.com/search?q=${searchQuery}`;
+                        
+                        console.log(`URL: ${searchUrl}`);
+                        
+                        // Abrimos en una nueva pestaña
+                        window.open(searchUrl, '_blank');
+                    });
+                }
+            });
             
-            // Obtenemos el nombre del lugar desde el texto del título en la misma tarjeta
-            const placeTitle = card.querySelector('.place-title').textContent.trim();
+            // Configurar el modal de selección de mapa
+            setupMapModal();
             
-            console.log(`Buscando: ${placeTitle}`);
-            
-            const searchQuery = encodeURIComponent(`${placeTitle} ${cityName}`);
-            const searchUrl = `https://www.google.com/search?q=${searchQuery}`;
-            
-            console.log(`URL: ${searchUrl}`);
-            
-            // Abrimos en una nueva pestaña
-            window.open(searchUrl, '_blank');
-        });
-    }
+            // Configurar navegación inferior
+            setupBottomNavigation(window.appState.apartmentId, window.appState.lang);
+        })
+        .catch(error => console.error('Error loading Madrid data:', error));
 }
 
-// Función principal para renderizar la página
-async function renderPage() {
-    try {
-        // Obtener información del apartamento con ciudad
-        const apartmentInfo = await getApartmentWithCity();
-        if (!apartmentInfo) {
-            console.error('No se pudo obtener información del apartamento');
-            showFallbackMessage('No se pudo cargar la información turística.');
-            return;
-        }
-        
-        const city = apartmentInfo.city;
-        console.log(`Cargando información turística para: ${city.name} (${city.id})`);
-        
-        // Cargar datos de la ciudad
-        const cityData = await loadCityData(city.id);
-        if (!cityData) {
-            console.error(`No se pudieron cargar los datos de ${city.name}`);
-            showFallbackMessage(`No hay información turística disponible para ${city.name}.`);
-            return;
-        }
-        
-        // Actualizar textos estáticos
-        document.title = t('tourism.title');
-        document.getElementById('page-title').textContent = t('tourism.title');
-        document.getElementById('hero-category').textContent = t('tourism.hero_slogan');
-        document.getElementById('hero-headline').textContent = `${city.name} Te Espera`;
-        document.getElementById('hero-description').textContent = t('tourism.hero_description');
-        document.getElementById('experiences-headline').textContent = t('tourism.experiences_title');
-        document.getElementById('experiences-subtitle').textContent = t('tourism.experiences_subtitle');
-        document.getElementById('fab-text').textContent = t('tourism.map_view');
-        
-        // Usamos window.ROOT_PATH para construir la ruta completa y correcta
-        document.querySelector('#hero-image .bg-cover').style.backgroundImage = `url('${window.ROOT_PATH}${cityData.hero.image}')`;
-        
-        // Renderizar el feed de experiencias
-        const feedContainer = document.getElementById('experiences-feed');
-        feedContainer.innerHTML = ''; // Limpiar contenido previo
-
-        cityData.experiences.forEach((exp, index) => {
-            renderExperienceCard(exp, index, city.name);
-        });
-        
-        // Configurar el modal de selección de mapa con las coordenadas de la ciudad actual
-        setupMapModal(city);
-        
-        // Configurar navegación inferior
-        setupBottomNavigation(window.appState.apartmentId, window.appState.lang);
-    } catch (error) {
-        console.error('Error renderizando la página de turismo:', error);
-        showFallbackMessage('Ha ocurrido un error al cargar la información turística.');
-    }
-}
-
-// Función para configurar el modal de selección de mapa
-function setupMapModal(city) {
+function setupMapModal() {
     const mapButton = document.getElementById('map-button');
     const mapModal = document.getElementById('map-modal');
     const closeModalBtn = document.getElementById('close-modal');
@@ -232,7 +123,7 @@ function setupMapModal(city) {
         option.addEventListener('click', function(e) {
             e.stopPropagation();
             const mapType = this.getAttribute('data-map');
-            openMap(mapType, city);
+            openMap(mapType);
             mapModal.classList.remove('show');
             setTimeout(() => {
                 mapModal.style.display = 'none';
@@ -241,12 +132,11 @@ function setupMapModal(city) {
     });
 }
 
-// Función para abrir el mapa con las coordenadas de la ciudad actual
-function openMap(mapType, city) {
-    const lat = city.lat || 40.4168;
-    const lng = city.lng || -3.7038;
-    const query = encodeURIComponent(`${city.name}, España`);
-    const label = encodeURIComponent(`Puntos de interés en ${city.name}`);
+function openMap(mapType) {
+    const lat = 40.4168;
+    const lng = -3.7038;
+    const query = encodeURIComponent('Madrid, España');
+    const label = encodeURIComponent('Puntos de interés en Madrid');
     
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     
@@ -291,20 +181,6 @@ function openMap(mapType, city) {
     }
     
     window.location.href = mapUrl;
-}
-
-// Función para mostrar mensaje de error
-function showFallbackMessage(message) {
-    const feedContainer = document.getElementById('experiences-feed');
-    if (!feedContainer) return;
-    
-    feedContainer.innerHTML = `
-        <div class="flex flex-col items-center justify-center py-12 text-center">
-            <span class="material-symbols-outlined text-5xl mb-4 text-gray-300 dark:text-gray-600">travel_explore</span>
-            <p class="text-lg font-medium text-gray-900 dark:text-white">${message}</p>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Por favor, inténtalo de nuevo más tarde.</p>
-        </div>
-    `;
 }
 
 // Función para configurar la navegación inferior

@@ -30,60 +30,18 @@
       ]
     },
     "devices": {
-      "climatzacion": { "type": "central", "detailsKey": "climatizacion_central" },
+      "climatizacion": { "type": "central", "detailsKey": "climatizacion_central" },
       "hob": { "type": "ceramic", "detailsKey": "hob_ceramic" },
       "washing_machine": { "type": "front_load", "detailsKey": "washing_machine_quick_wash" },
       "coffee_maker": { "type": "nespresso", "detailsKey": "coffee_maker_refill" }
     },
-    "recommendations": {
-      "featured": {
-        "name": "La Bodega de los Secretos",
-        "typeKey": "restaurant",
-        "descriptionKey": "bodega_secretos_desc",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAMRr_ODQKE7jaT0U7vadp78RK6bAMRaOsEqDcyLG9G4bOBuhgtKAjo7_LGn3O-VMmXRTmLHB-yKnXvLNAf2smR0wQm4untOLHFnMS39dIw_Riq0qMZj-NOazMMC6FA78gZ5NoRhXVgMWiOeqS4HtG5bxDm4N3v1iBO3_yCgDvhel0e4CuCPAJLEZP1RnEpDNeFl3iNHHJuSyDBJ5jSx6Syvw_AapfATQlUDANde8xrO4y2a-7TAUdi_CuMXeu-FBLecUwO3q0MrQ",
-        "distance": "7 min",
-        "priceRange": "$$"
-      },
-      "categories": [
-        { "icon": "grid_view", "key": "all" },
-        { "icon": "restaurant", "key": "eat" },
-        { "icon": "local_cafe", "key": "drink" },
-        { "icon": "shopping_bag", "key": "shop" },
-        { "icon": "directions_bus", "key": "transit" }
-      ],
-      "sections": [
-        {
-          "titleKey": "eats_title",
-          "items": [
-            {
-              "name": "Mercado de San Miguel",
-              "typeKey": "food_market",
-              "descriptionKey": "mercado_san_miguel_desc",
-              "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDpd0g-Dsv_AZ0c1waqrdzXUiKAB9vDUt_LJT9hNGCrAphok_e0SanYi0g575H8nBEEpCTXHNqsTEGmRZ7DK59cHWWYBPRfg0RsZVjUyjDeisVxrDmZw7uATMwBxU7xsb6X0QdpT4O9JFWk6OMSVYNmgttyTIjZl5vmHC_ONGXD7gOqrR5sYi13NfSgdqMQzLrOos06ESuFyMHjqb3uXHthFdqZjpXSv9pK8Q_Y7jGf4_p3ePr-c2Au80S-3cOQmvrJSj-qTZWGAw",
-              "distance": "12 min walk",
-              "priceRange": "$$$"
-            },
-            {
-              "name": "HanSo Café",
-              "typeKey": "coffee_shop",
-              "descriptionKey": "hanso_cafe_desc",
-              "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBZDNtkFUcXf_aoI1jxtNWsueLOU0lUrjdCJkYVEPVSsviWvSGhou6ipHPD4pLTnNfa-ZoR8LS_Y9N06ex9dVvqlgJYciblmPM5yTei4m3HcMWbxWuUGkEyWtre8IV0H-KseUoGnNSW4e27NSSS_-8wE2952-07G2R754RbqJmtnG24j_6g4YhUPEM7RuGRnkTOwOJaJ-9XXPtVKXPlRawK8_rwbFY9ZOEqA_P-XBFF0XBdYuBanOFKeK6ZjPGFIVICH7-au4scfQ",
-              "distance": "5 min walk",
-              "priceRange": "$$"
-            }
-          ]
-        }
-      ]
-    },
     "houseRules": [
-      { "icon": "smoke_free", "titleKey": "rules_no_smoking", "color": "red" },
-      { "icon": "bedtime", "titleKey": "rules_quiet_hours", "subtitleKey": "rules_quiet_hours_time", "color": "indigo" },
-      { "icon": "recycling", "titleKey": "rules_recycle", "color": "green" },
-      { "icon": "schedule", "titleKey": "rules_checkout", "subtitleKey": "rules_checkout_time", "color": "amber" }
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "bedtime", "titleKey": "rules.quiet_hours", "subtitleKey": "rules.quiet_hours_time", "color": "indigo" },
+      { "icon": "recycling", "titleKey": "rules.recycle", "color": "green" },
+      { "icon": "schedule", "titleKey": "rules.checkout", "subtitleKey": "rules.checkout_time", "color": "amber" }
     ],
-    "raixerDevices": {
-      "deviceId": "3f0042000b504b5350313220"
-    },
+    "raixerDevices": { "deviceId": "3f0042000b504b5350313220" },
     "emergency": {
       "apartmentId": "A2",
       "host": {
@@ -91,57 +49,70 @@
         "role": "Property Manager",
         "phone": "+34600123456",
         "whatsapp": "+34600123456",
-        "photo": "https://lh3.googleusercontent.com/aida-public/AB6AXuAUOrgNX3RswPRXZIgUVqUgAstK1P8jkcSoCAFnNZBc-gbZlUh6fExRo-_oWcyrCjjyd05eWoQM8IsumNKv3wVkRiTOD6AhhOwdsLPIjF9vyPt85sWPYiTgYU3FfBwL2gEfUnZ8ZLlTVZ4vJNYRSATwbF13TX2uEDgpv44uidagLZX3GXKU6tq8_vegMvR0yCeOogmR-C8r6HLCDCzqKg1iD0uF3CBlWJK7tQbENDQ2nlX4mYpBTgFRU84yyaH4YcwIEJjj-OpNfA",
+        "photo": "https://lh3.googleusercontent.com/...",
         "online": true,
         "availability": { "general": "09:00 - 22:00", "emergency": "24/7" }
       }
+    },
+    "rules": {
+      "quiet_hours_start": "23:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
     }
   },
 
-  "granvia-205": {
-    "id": "granvia-205",
-    "slug": "granvia-205",
-    "name": "Piso de Lujo en Gran Vía",
-    "address": "Gran Vía, 60, 2º D",
+  "Ruda-15": {
+    "id": "Ruda-15",
+    "slug": "Ruda-15",
+    "name": "Piso de Lujo en el corazon de Madrid",
+    "address": "Calle Ruda 15, Bajo A Interior",
     "lat": 40.4208,
     "lng": -3.7059,
     "cityId": "madrid",
-    "zone": "granvia",
+    "zone": "La-latina",
     "images": {
-      "portada": "assets/images/apartments/granvia-205/portada.jpg"
+      "portada": "assets/images/apartments/ruda-15/portada.jpg"
     },
     "host": {
-      "name": "Carlos & Sofia",
-      "phone": "+34 600 111 111"
+      "name": "Batuecas",
+      "phone": "+34 638 90 89 49"
     },
     "wifi": {
-      "type": "keypad",
-      "code": "1234ABCD",
+      "network": "DIGIFIBRA-DRTE",
+      "password": "P5tSeK2PXZPz"
+    },
+    "access": {
+      "type": "smart",
+      "code": "sin códigos",
       "instructions": [
-        "Pasa la tarjeta por el lector junto a la puerta.",
+        "Al abrir esta guía te encontrarás con varias pestañas, selecciona Información esencial...",
         "La luz se pondrá verde y la cerradura se desbloqueará."
       ]
     },
-    "access": { "type": "keypad", "code": "1234ABCD" },
     "devices": {
       "heating": { "type": "central", "detailsKey": "heating_central" }
     },
     "houseRules": [
-      { "icon": "smoke_free", "titleKey": "rules_no_smoking", "color": "red" },
-      { "icon": "bedtime", "titleKey": "rules_quiet_hours", "subtitleKey": "rules_quiet_hours_time", "color": "indigo" }
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "bedtime", "titleKey": "rules.quiet_hours", "subtitleKey": "rules.quiet_hours_time", "color": "indigo" }
     ],
-    "raixerDevices": { "deviceId": "3e0036000a47363433353735" },
+    "raixerDevices": { "deviceId": "0a10aced202194944a02fe1c" },
     "emergency": {
-      "apartmentId": "B5",
+      "apartmentId": "Bajo A Interior",
       "host": {
-        "name": "Carlos & Sofia",
+        "name": "Batuecas Rea Estate",
         "role": "Property Manager",
-        "phone": "+34 600 111 111",
-        "whatsapp": "+34 600 111 111",
-        "photo": "https://lh3.googleusercontent.com/aida-public/AB6AXuAUOrgNX3RswPRXZIgUVqUgAstK1P8jkcSoCAFnNZBc-gbZlUh6fExRo-_oWcyrCjjyd05eWoQM8IsumNKv3wVkRiTOD6AhhOwdsLPIjF9vyPt85sWPYiTgYU3FfBwL2gEfUnZ8ZLlTVZ4vJNYRSATwbF13TX2uEDgpv44uidagLZX3GXKU6tq8_vegMvR0yCeOogmR-C8r6HLCDCzqKg1iD0uF3CBlWJK7tQbENDQ2nlX4mYpBTgFRU84yyaH4YcwIEJjj-OpNfA",
+        "phone": "+34 638 90 89 49",
+        "whatsapp": "+34 638 90 89 49",
+        "photo": "https://lh3.googleusercontent.com/...",
         "online": true,
         "availability": { "general": "09:00 - 22:00", "emergency": "24/7" }
       }
+    },
+    "rules": {
+      "quiet_hours_start": "22:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
     }
   },
 
@@ -180,8 +151,8 @@
       "coffee_maker": { "type": "nespresso", "detailsKey": "coffee_maker_refill" }
     },
     "houseRules": [
-      { "icon": "smoke_free", "titleKey": "rules_no_smoking", "color": "red" },
-      { "icon": "bedtime", "titleKey": "rules_quiet_hours", "subtitleKey": "rules_quiet_hours_time", "color": "indigo" }
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "bedtime", "titleKey": "rules.quiet_hours", "subtitleKey": "rules.quiet_hours_time", "color": "indigo" }
     ],
     "raixerDevices": { "deviceId": "3f0042000b504b5350313222" },
     "emergency": {
@@ -191,10 +162,15 @@
         "role": "Property Manager",
         "phone": "+34 600 222 333",
         "whatsapp": "+34 600 222 333",
-        "photo": "https://lh3.googleusercontent.com/aida-public/AB6AXuAUOrgNX3RswPRXZIgUVqUgAstK1P8jkcSoCAFnNZBc-gbZlUh6fExRo-_oWcyrCjjyd05eWoQM8IsumNKv3wVkRiTOD6AhhOwdsLPIjF9vyPt85sWPYiTgYU3FfBwL2gEfUnZ8ZLlTVZ4vJNYRSATwbF13TX2uEDgpv44uidagLZX3GXKU6tq8_vegMvR0yCeOogmR-C8r6HLCDCzqKg1iD0uF3CBlWJK7tQbENDQ2nlX4mYpBTgFRU84yyaH4YcwIEJjj-OpNfA",
+        "photo": "https://lh3.googleusercontent.com/...",
         "online": true,
         "availability": { "general": "09:00 - 22:00", "emergency": "24/7" }
       }
+    },
+    "rules": {
+      "quiet_hours_start": "22:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
     }
   },
 
@@ -233,9 +209,9 @@
       "washing_machine": { "type": "front_load", "detailsKey": "washing_machine_quick_wash" }
     },
     "houseRules": [
-      { "icon": "smoke_free", "titleKey": "rules_no_smoking", "color": "red" },
-      { "icon": "bedtime", "titleKey": "rules_quiet_hours", "subtitleKey": "rules_quiet_hours_time", "color": "indigo" },
-      { "icon": "pets", "titleKey": "rules_pets_allowed", "color": "green" }
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "bedtime", "titleKey": "rules.quiet_hours", "subtitleKey": "rules.quiet_hours_time", "color": "indigo" },
+      { "icon": "pets", "titleKey": "rules.pets_allowed", "color": "green" }
     ],
     "raixerDevices": { "deviceId": "4a0051000c584b5350323221" },
     "emergency": {
@@ -245,10 +221,15 @@
         "role": "Property Manager",
         "phone": "+34 600 333 444",
         "whatsapp": "+34 600 333 444",
-        "photo": "https://lh3.googleusercontent.com/aida-public/...",
+        "photo": "https://lh3.googleusercontent.com/...",
         "online": true,
         "availability": { "general": "10:00 - 23:00", "emergency": "24/7" }
       }
+    },
+    "rules": {
+      "quiet_hours_start": "22:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
     }
   },
 
@@ -287,8 +268,8 @@
       "washing_machine": { "type": "front_load", "detailsKey": "washing_machine_quick_wash" }
     },
     "houseRules": [
-      { "icon": "smoke_free", "titleKey": "rules_no_smoking", "color": "red" },
-      { "icon": "recycling", "titleKey": "rules_recycle", "color": "green" }
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "recycling", "titleKey": "rules.recycle", "color": "green" }
     ],
     "raixerDevices": { "deviceId": "5b0062000d694b5350333223" },
     "emergency": {
@@ -298,10 +279,15 @@
         "role": "Property Manager",
         "phone": "+34 600 444 555",
         "whatsapp": "+34 600 444 555",
-        "photo": "https://lh3.googleusercontent.com/aida-public/...",
+        "photo": "https://lh3.googleusercontent.com/...",
         "online": true,
         "availability": { "general": "08:00 - 23:00", "emergency": "24/7" }
       }
+    },
+    "rules": {
+      "quiet_hours_start": "22:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
     }
   },
 
@@ -340,8 +326,8 @@
       "coffee_maker": { "type": "nespresso", "detailsKey": "coffee_maker_refill" }
     },
     "houseRules": [
-      { "icon": "pets", "titleKey": "rules_pets_allowed", "color": "green" },
-      { "icon": "smoke_free", "titleKey": "rules_no_smoking", "color": "red" }
+      { "icon": "pets", "titleKey": "rules.pets_allowed", "color": "green" },
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" }
     ],
     "raixerDevices": { "deviceId": "6c0073000e7a4b5350343224" },
     "emergency": {
@@ -351,10 +337,132 @@
         "role": "Property Manager",
         "phone": "+34 600 555 666",
         "whatsapp": "+34 600 555 666",
-        "photo": "https://lh3.googleusercontent.com/aida-public/...",
+        "photo": "https://lh3.googleusercontent.com/...",
         "online": true,
         "availability": { "general": "10:00 - 24:00", "emergency": "24/7" }
       }
+    },
+    "rules": {
+      "quiet_hours_start": "22:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
+    }
+  },
+
+  "gracia-101": {
+    "id": "gracia-101",
+    "slug": "gracia-101",
+    "name": "Ático luminoso con terraza en Gràcia",
+    "address": "Carrer de Verdi, 88, Àtic",
+    "lat": 41.40214,
+    "lng": 2.15789,
+    "cityId": "barcelona",
+    "zone": "gracia",
+    "images": {
+      "portada": "assets/images/apartments/gracia-101/portada.jpg",
+      "acceso": "assets/images/apartments/gracia-101/acceso.jpg",
+      "terraza": "assets/images/apartments/gracia-101/terraza.jpg"
+    },
+    "host": {
+      "name": "Laia Soler",
+      "photo": "assets/images/apartments/gracia-101/host.jpg",
+      "phone": "+34 655 112 233"
+    },
+    "wifi": {
+      "network": "Gracia101_5G",
+      "password": "Verdi2025!"
+    },
+    "access": {
+      "type": "keybox",
+      "code": "7789",
+      "instructions": [
+        "La keybox está al lado del timbre principal (color gris)",
+        "Introduce el código y gira hacia la derecha"
+      ]
+    },
+    "devices": {
+      "air_conditioning": { "type": "split", "detailsKey": "ac_split_remote" },
+      "coffee_maker": { "type": "dolce_gusto", "detailsKey": "coffee_maker_capsules" }
+    },
+    "houseRules": [
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "bedtime", "titleKey": "rules.quiet_hours", "subtitleKey": "rules.quiet_hours_time", "color": "indigo" },
+      { "icon": "pets", "titleKey": "rules.pets_allowed", "color": "green" }
+    ],
+    "raixerDevices": { "deviceId": "bc2200ff1122334455667788" },
+    "emergency": {
+      "apartmentId": "Àtic Verdi",
+      "host": {
+        "name": "Laia Soler",
+        "role": "Property Manager",
+        "phone": "+34 655 112 233",
+        "whatsapp": "+34 655 112 233",
+        "online": true,
+        "availability": { "general": "10:00 - 22:00", "emergency": "24/7" }
+      }
+    },
+    "rules": {
+      "quiet_hours_start": "23:00",
+      "quiet_hours_end": "08:00",
+      "checkout_time": "11:00"
+    }
+  },
+
+  "ruzafa-302": {
+    "id": "ruzafa-302",
+    "slug": "ruzafa-302",
+    "name": "Piso moderno y colorido en Ruzafa",
+    "address": "Calle de Cádiz, 22, 3º 302",
+    "lat": 39.46278,
+    "lng": -0.37012,
+    "cityId": "valencia",
+    "zone": "ruzafa",
+    "images": {
+      "portada": "assets/images/apartments/ruzafa-302/portada.jpg",
+      "salon": "assets/images/apartments/ruzafa-302/salon.jpg"
+    },
+    "host": {
+      "name": "Miguel Ángel",
+      "photo": "assets/images/apartments/ruzafa-302/host.jpg",
+      "phone": "+34 644 987 654"
+    },
+    "wifi": {
+      "network": "Ruzafa_VLC_302",
+      "password": "RuzafaLovers25"
+    },
+    "access": {
+      "type": "smartlock",
+      "code": "via_app",
+      "instructions": [
+        "Te enviaremos enlace y código temporal por WhatsApp 24h antes de la llegada",
+        "Abre la app y pulsa 'Desbloquear'"
+      ]
+    },
+    "devices": {
+      "air_conditioning": { "type": "portable", "detailsKey": "ac_portable_guide" },
+      "washing_machine": { "type": "front_load", "detailsKey": "washing_machine_quick_wash" }
+    },
+    "houseRules": [
+      { "icon": "smoke_free", "titleKey": "rules.no_smoking", "color": "red" },
+      { "icon": "volume_up", "titleKey": "rules.no_parties", "color": "orange" },
+      { "icon": "recycling", "titleKey": "rules.recycle", "color": "green" }
+    ],
+    "raixerDevices": { "deviceId": "vlc9900aa1122334455669900" },
+    "emergency": {
+      "apartmentId": "Ruzafa 302",
+      "host": {
+        "name": "Miguel Ángel Pérez",
+        "role": "Property Manager",
+        "phone": "+34 644 987 654",
+        "whatsapp": "+34 644 987 654",
+        "online": true,
+        "availability": { "general": "09:00 - 23:00", "emergency": "24/7" }
+      }
+    },
+    "rules": {
+      "quiet_hours_start": "23:30",
+      "quiet_hours_end": "08:30",
+      "checkout_time": "11:30"
     }
   }
 }

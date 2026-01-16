@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html class="dark" lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="page-title-meta">Guía Turística</title>
-    <meta name="description" content="Descubre los lugares más impresionantes de tu destino">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="../css/styles.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" as="style">
-    
+    <title>Imprescindibles de Madrid</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -29,28 +21,11 @@
                         "display": ["Plus Jakarta Sans", "sans-serif"]
                     },
                     borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                    animation: {
-                        "fade-in": "fadeIn 0.5s ease-in-out",
-                        "slide-up": "slideUp 0.3s ease-out",
-                        "pulse-slow": "pulse 3s infinite",
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            "0%": { opacity: "0" },
-                            "100%": { opacity: "1" }
-                        },
-                        slideUp: {
-                            "0%": { transform: "translateY(20px)", opacity: "0" },
-                            "100%": { transform: "translateY(0)", opacity: "1" }
-                        }
-                    }
                 },
             }
         }
     </script>
-    
     <style>
-        /* Mejoras de scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -87,65 +62,22 @@
             opacity: 1;
         }
 
-        /* Skeleton loader */
-        .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        .dark .skeleton {
-            background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-            background-size: 200% 100%;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Lazy loading placeholder */
-        .lazy-image {
-            background-color: #f0f0f0;
-            transition: opacity 0.3s;
-        }
-
-        .lazy-image.loaded {
-            opacity: 1;
+        /* Asegurarse de que los botones sean clicables */
+        .details-btn {
+            cursor: pointer !important;
+            pointer-events: auto !important;
         }
 
         /* Control de Z-index para elementos superpuestos */
         #map-button-container {
+            /* Posicionado por encima de la barra de navegación (z-50) */
             bottom: calc(4rem + 1.5rem + env(safe-area-inset-bottom));
             z-index: 60;
         }
 
         #map-modal {
+            /* Asegura que el modal esté por encima de TODO el contenido */
             z-index: 9999;
-        }
-
-        /* Mejoras de accesibilidad */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Focus visible para accesibilidad */
-        .focus-visible:focus-visible {
-            outline: 2px solid #1152d4;
-            outline-offset: 2px;
-        }
-
-        /* Transiciones suaves para tema */
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
     </style>
 </head>
@@ -153,122 +85,77 @@
 <body
     class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased overflow-x-hidden">
     
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white p-2 rounded">
-        Saltar al contenido principal
-    </a>
-    
     <!-- Top Bar -->
     <header
         class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 dark:bg-background-dark/80 border-b border-gray-200/10 dark:border-white/5 transition-all duration-300">
         <div class="flex items-center p-4 justify-between h-16">
             <button onclick="goBack()"
-                class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus-visible focus-visible">
+                class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800">
                 <span class="material-symbols-outlined">arrow_back</span>
-                <span class="sr-only">Volver</span>
             </button>
             <h1 id="page-title"
                 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-wide flex-1 text-center uppercase text-sm">
-                <span class="skeleton h-4 w-24 inline-block rounded"></span>
-            </h1>
-            <button onclick="changeLanguage()" 
-                class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus-visible focus-visible">
+                Cargando...</h1>
+            <button onclick="changeLanguage()" class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800">
                 <span class="material-symbols-outlined">language</span>
-                <span class="sr-only">Cambiar idioma</span>
             </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="relative w-full flex flex-col group/design-root">
         <div class="w-full">
             <div id="hero-image" class="relative w-full h-[65vh] min-h-[500px] overflow-hidden">
-                <!-- Placeholder para imagen del héroe -->
-                <div class="absolute inset-0 skeleton"></div>
-                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105 lazy-image"
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
                     style="background-image: url('');">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent opacity-90">
                     </div>
                     <div class="absolute bottom-0 left-0 w-full p-6 pb-12 flex flex-col justify-end h-full">
                         <span id="hero-category"
-                            class="text-primary font-medium tracking-[0.2em] uppercase text-xs mb-2 skeleton h-4 w-32 inline-block rounded">
-                        </span>
+                            class="text-primary font-medium tracking-[0.2em] uppercase text-xs mb-2">Cargando...</span>
                         <h2 id="hero-headline"
-                            class="text-white text-5xl font-bold leading-tight tracking-tight mb-2 drop-shadow-lg skeleton h-12 w-64 rounded">
-                        </h2>
-                        <p id="hero-description" 
-                            class="text-gray-300 text-lg max-w-md font-light leading-relaxed skeleton h-16 w-full rounded">
-                        </p>
+                            class="text-white text-5xl font-bold leading-tight tracking-tight mb-2 drop-shadow-lg">
+                            Cargando...</h2>
+                        <p id="hero-description" class="text-gray-300 text-lg max-w-md font-light leading-relaxed">
+                            Cargando...</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Main Content -->
-    <main id="main-content" class="relative flex flex-col w-full px-4 pb-24 -mt-6 z-10">
+    <main class="relative flex flex-col w-full px-4 pb-24 -mt-6 z-10">
         <div class="flex flex-col gap-1 mb-6">
-            <h3 id="experiences-headline" 
-                class="text-gray-900 dark:text-white text-2xl font-bold leading-tight skeleton h-8 w-48 rounded">
-            </h3>
-            <p id="experiences-subtitle" 
-                class="text-gray-500 dark:text-gray-400 text-sm skeleton h-4 w-64 rounded">
-            </p>
+            <h3 id="experiences-headline" class="text-gray-900 dark:text-white text-2xl font-bold leading-tight">
+                Cargando...</h3>
+            <p id="experiences-subtitle" class="text-gray-500 dark:text-gray-400 text-sm">Cargando...</p>
         </div>
-        
-        <!-- Loading state -->
-        <div id="loading-state" class="flex flex-col gap-8">
-            <!-- Skeleton cards -->
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="skeleton h-80 w-full md:w-1/2 rounded-2xl"></div>
-                <div class="skeleton h-80 w-full md:w-1/2 rounded-2xl"></div>
-            </div>
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="skeleton h-80 w-full md:w-1/2 rounded-2xl"></div>
-                <div class="skeleton h-80 w-full md:w-1/2 rounded-2xl"></div>
-            </div>
-        </div>
-        
-        <!-- Error state -->
-        <div id="error-state" class="hidden flex flex-col items-center justify-center py-12">
-            <span class="material-symbols-outlined text-5xl mb-4 text-red-500">error</span>
-            <h3 class="text-xl font-bold mb-2">Error al cargar el contenido</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4 text-center">No se pudo cargar la información turística. Por favor, inténtalo de nuevo.</p>
-            <button onclick="location.reload()" 
-                class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors focus-visible">
-                Reintentar
-            </button>
-        </div>
-        
-        <!-- Experiences feed -->
-        <div id="experiences-feed" class="hidden flex flex-col gap-8"></div>
+        <div id="experiences-feed" class="flex flex-col gap-8"></div>
     </main>
     
     <!-- Botón flotante del mapa -->
     <div id="map-button-container" class="fixed left-1/2 transform -translate-x-1/2 transition-opacity duration-300">
         <button id="map-button"
-            class="flex items-center justify-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform duration-200 focus-visible">
+            class="flex items-center justify-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform duration-200">
             <span class="material-symbols-outlined" style="font-size: 20px;">map</span>
-            <span id="fab-text" class="text-sm font-bold tracking-wide">Ver mapa</span>
+            <span id="fab-text" class="text-sm font-bold tracking-wide">Cargando...</span>
         </button>
     </div>
     
     <!-- Modal de selección de mapa -->
-    <div id="map-modal" class="modal-backdrop fixed inset-0 flex items-end justify-center" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="map-modal-title">
+    <div id="map-modal" class="modal-backdrop fixed inset-0 flex items-end justify-center" style="display: none;">
         <div class="modal-content bg-white dark:bg-surface-dark w-full max-w-md rounded-t-3xl p-6 pb-8">
             <div class="flex justify-between items-center mb-6">
-                <h3 id="map-modal-title" class="text-xl font-bold text-gray-900 dark:text-white">Abrir mapa con</h3>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Abrir mapa con</h3>
                 <button id="close-modal"
-                    class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 focus-visible">
+                    class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
                     <span class="material-symbols-outlined">close</span>
-                    <span class="sr-only">Cerrar</span>
                 </button>
             </div>
 
             <div class="grid grid-cols-3 gap-4">
                 <button
-                    class="map-option flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus-visible"
+                    class="map-option flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
                     data-map="google">
                     <div class="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
                         <span class="material-symbols-outlined text-red-600 dark:text-red-400 text-xl">map</span>
@@ -277,7 +164,7 @@
                 </button>
 
                 <button
-                    class="map-option flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus-visible"
+                    class="map-option flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
                     data-map="apple">
                     <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
                         <span class="material-symbols-outlined text-gray-700 dark:text-gray-300 text-xl">map</span>
@@ -286,7 +173,7 @@
                 </button>
 
                 <button
-                    class="map-option flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus-visible"
+                    class="map-option flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
                     data-map="waze">
                     <div
                         class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center">
@@ -300,33 +187,32 @@
 
     <!-- Bottom Navigation -->
     <nav
-        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800"
-        role="navigation" aria-label="Navegación principal">
+        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800">
         <div class="flex justify-around items-center h-16 max-w-md mx-auto">
             <a id="nav-home" href="#"
-                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity focus-visible">
+                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">home</span>
-                <span class="text-[10px]">Inicio</span>
+                <span class="text-[10px]">Cargando...</span>
             </a>
             <a id="nav-devices" href="#"
-                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity focus-visible">
+                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">power</span>
-                <span class="text-[10px]">Dispositivos</span>
+                <span class="text-[10px]">Cargando...</span>
             </a>
             <a id="nav-recommendations" href="#"
-                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity focus-visible">
+                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">explore</span>
-                <span class="text-[10px]">Recomendaciones</span>
+                <span class="text-[10px]">Cargando...</span>
             </a>
             <a id="nav-tourism" href="#"
-                class="flex flex-col items-center gap-1 opacity-100 hover:opacity-100 transition-opacity focus-visible">
+                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">map</span>
-                <span class="text-[10px]">Turismo</span>
+                <span class="text-[10px]">Cargando...</span>
             </a>
             <a id="nav-contact" href="#"
-                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity focus-visible">
+                class="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
                 <span class="material-symbols-outlined">contact_phone</span>
-                <span class="text-[10px]">Contacto</span>
+                <span class="text-[10px]">Cargando...</span>
             </a>
         </div>
     </nav>
@@ -358,39 +244,6 @@
         document.getElementById('map-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
-            }
-        });
-        
-        // Cerrar con tecla Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-        
-        // Lazy loading para imágenes
-        document.addEventListener('DOMContentLoaded', function() {
-            const lazyImages = document.querySelectorAll('.lazy-image');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const image = entry.target;
-                            image.classList.add('loaded');
-                            imageObserver.unobserve(image);
-                        }
-                    });
-                });
-                
-                lazyImages.forEach(function(image) {
-                    imageObserver.observe(image);
-                });
-            } else {
-                // Fallback para navegadores que no soportan IntersectionObserver
-                lazyImages.forEach(function(image) {
-                    image.classList.add('loaded');
-                });
             }
         });
     </script>
