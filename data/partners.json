@@ -399,7 +399,7 @@
     "plan": "basic",
     "offer": "Brunch con café gratis para huéspedes",
     "distanceKey": "5 min walk",
-    "priceRange": "undefined",
+    "priceRange": "$$",
     "categoryKey": "shop",
     "redirectUrl": "https://www.laie.es"
   },
@@ -421,7 +421,7 @@
     "plan": "basic",
     "offer": "Entrada con audio guía a precio reducido",
     "distanceKey": "3 min walk",
-    "priceRange": "   ",
+    "priceRange": "$$",
     "categoryKey": "experience",
     "redirectUrl": "https://casavicens.org/es/visitas"
   },

@@ -70,6 +70,12 @@
     "house_rules_title": "Hausregeln",
     "contact_host": "Den gastgeber kontaktieren",
     "usually_responds": "Antwortet in der regel innerhalb einer stunde"
+    ,"instructions_note": "Hinweis: Anweisungen teilweise automatisch übersetzt."
+    ,"index.html": "Startseite"
+    ,"recommendations.html": "Empfehlungen"
+    ,"0.25rem": "0.25rem"
+    ,"0.5rem": "0.5rem"
+    ,"0.75rem": "0.75rem"
   },
   "devices": {
     "title": "Wie man geräte verwendet",

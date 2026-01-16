@@ -70,6 +70,12 @@
     "house_rules_title": "House rules",
     "contact_host": "Contact the host",
     "usually_responds": "Usually responds within an hour"
+    ,"instructions_note": "Note: Instructions partially translated automatically."
+    ,"index.html": "Home"
+    ,"recommendations.html": "Recommendations"
+    ,"0.25rem": "0.25rem"
+    ,"0.5rem": "0.5rem"
+    ,"0.75rem": "0.75rem"
   },
   "devices": {
     "title": "How to use devices",

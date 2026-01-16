@@ -231,9 +231,28 @@ function setupAccessSection(apartment){
             accessData.instructions.forEach((step,i)=>{
                 const li=document.createElement('li');
                 li.className='flex gap-2 items-start';
-                const translatedStep = window.resolveTranslation?window.resolveTranslation(step,currentLang):localT(step);
-                li.innerHTML=`<span class="flex items-center justify-center size-6 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-bold mt-0.5">${i+1}</span>
-                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">${translatedStep}</p>`;
+                let stepText = '';
+                if (typeof step === 'string') {
+                    stepText = step;
+                } else if (typeof step === 'object' && step !== null) {
+                    // Si es un objeto, busca la propiedad 'text', 'key', o usa el valor plano
+                    if (step.text) {
+                        stepText = step.text;
+                    } else if (step.key) {
+                        stepText = localT(step.key);
+                    } else {
+                        // Si el objeto tiene solo una propiedad, usa su valor
+                        const values = Object.values(step);
+                        stepText = values.length === 1 ? values[0] : JSON.stringify(step);
+                    }
+                }
+                // Si el texto parece ser una clave de traducción, tradúcelo
+                let finalText = stepText;
+                if (typeof finalText === 'string' && finalText.startsWith('essentials.') || finalText.startsWith('rules.') || finalText.startsWith('access.')) {
+                    finalText = localT(finalText);
+                }
+                li.innerHTML = `<span class="flex items-center justify-center size-6 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-bold mt-0.5">${i+1}</span>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">${finalText}</p>`;
                 accessStepsList.appendChild(li);
             });
             if(currentLang!=='es'){
@@ -281,42 +300,45 @@ function setupWiFiSection(apartment){
 /* =====================================================
    HOUSE RULES
 ===================================================== */
+function replacePlaceholders(str, placeholders) {
+  return str.replace(/{{(.*?)}}/g, (_, key) => placeholders[key.trim()] || '');
+}
+
 function setupHouseRules(apartment){
     const houseRules=apartment.houseRules;
     const houseRulesSection=safeGet('house-rules-section');
     if(!houseRules||!Array.isArray(houseRules)||houseRules.length===0){ if(houseRulesSection) houseRulesSection.style.display='none'; return; }
     if(houseRulesSection) houseRulesSection.style.display='block';
-    safeText('house-rules-title',(window.resolveTranslation?window.resolveTranslation('essentials.house_rules'):t('essentials.house_rules'))||'Normas de la Casa');
+    safeText('house-rules-title', localT('essentials.house_rules_title') || 'Normas de la casa');
 
     const houseRulesGrid=safeGet('house-rules-grid');
     if(!houseRulesGrid) return;
     houseRulesGrid.innerHTML='';
 
-    houseRules.forEach(rule=>{
-        const ruleCard=document.createElement('div');
-        ruleCard.className='flex flex-col items-center gap-2 p-3 rounded-lg bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-gray-800';
+    houseRules.forEach(rule => {
+        const ruleCard = document.createElement('div');
+        ruleCard.className = 'flex flex-col items-center gap-2 p-3 rounded-lg bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-gray-800';
 
-        const icon=document.createElement('span');
-        icon.className=`material-symbols-outlined text-${rule.color||'primary'}`;
-        icon.textContent=rule.icon;
+        const icon = document.createElement('span');
+        icon.className = `material-symbols-outlined text-${rule.color || 'primary'}`;
+        icon.textContent = rule.icon;
         ruleCard.appendChild(icon);
 
-        const title=document.createElement('span');
-        title.className='text-sm font-semibold text-center';
-        const titleText=(window.resolveTranslation?window.resolveTranslation(rule.titleKey):t(rule.titleKey))||rule.titleKey;
-        title.textContent=titleText;
+        const title = document.createElement('span');
+        title.className = 'text-sm font-semibold text-center';
+        title.textContent = localT(rule.titleKey) || rule.titleKey;
         ruleCard.appendChild(title);
 
-        if(rule.subtitleKey){
-            const subtitle=document.createElement('span');
-            subtitle.className='text-xs text-text-muted-light dark:text-text-muted-dark text-center mt-1';
-            const placeholders={
-                quiet_hours_start: apartment?.rules?.quiet_hours_start||'22:00',
-                quiet_hours_end: apartment?.rules?.quiet_hours_end||'08:00',
-                checkout_time: apartment?.rules?.checkout_time||'11:00'
+        if (rule.subtitleKey) {
+            const subtitle = document.createElement('span');
+            subtitle.className = 'text-xs text-text-muted-light dark:text-text-muted-dark text-center mt-1';
+            const placeholders = {
+                quiet_hours_start: apartment?.rules?.quiet_hours_start || '22:00',
+                quiet_hours_end: apartment?.rules?.quiet_hours_end || '08:00',
+                checkout_time: apartment?.rules?.checkout_time || '11:00'
             };
-            const subtitleText=(window.resolveTranslation?window.resolveTranslation(rule.subtitleKey,placeholders):t(rule.subtitleKey,placeholders))||rule.subtitleKey;
-            subtitle.textContent=subtitleText;
+            const rawText = localT(rule.subtitleKey);
+            subtitle.textContent = replacePlaceholders(rawText, placeholders) || rule.subtitleKey;
             ruleCard.appendChild(subtitle);
         }
         houseRulesGrid.appendChild(ruleCard);
