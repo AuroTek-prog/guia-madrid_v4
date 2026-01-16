@@ -382,6 +382,50 @@
     "redirectUrl": "https://parkguell.barcelona/es"
   },
   {
+    "id": "cafe-bcn-002",
+    "name": "Federal Café",
+    "type": "coffee_shop",
+    "description": "Café australiano con brunch saludable y ambiente relajado en el corazón de Gràcia",
+    "image": "assets/images/partners/cafe-bcn-002.jpg",
+    "lat": 41.4015,
+    "lng": 2.1532,
+    "cityId": "barcelona",
+    "zones": [
+      "gracia",
+      "eixample"
+    ],
+    "active": true,
+    "global": false,
+    "plan": "basic",
+    "offer": "Brunch con café gratis para huéspedes",
+    "distanceKey": "5 min walk",
+    "priceRange": "undefined",
+    "categoryKey": "shop",
+    "redirectUrl": "https://www.laie.es"
+  },
+  {
+    "id": "exp-bcn-002",
+    "name": "Casa Vicens",
+    "type": "experience",
+    "description": "Casa modernista de Gaudí en Gràcia, visita guiada a esta joya arquitectónica",
+    "image": "assets/images/partners/exp-bcn-002.jpg",
+    "lat": 41.4035,
+    "lng": 2.1508,
+    "cityId": "barcelona",
+    "zones": [
+      "gracia",
+      "sarria-sant-gervasi"
+    ],
+    "active": true,
+    "global": false,
+    "plan": "basic",
+    "offer": "Entrada con audio guía a precio reducido",
+    "distanceKey": "3 min walk",
+    "priceRange": "   ",
+    "categoryKey": "experience",
+    "redirectUrl": "https://casavicens.org/es/visitas"
+  },
+  {
     "id": "rest-vlc-001",
     "name": "Ricard Camarena Restaurant",
     "type": "restaurant",
@@ -424,6 +468,50 @@
     "priceRange": "$$",
     "categoryKey": "drink",
     "redirectUrl": "https://www.instagram.com/dulcedelechevlc"
+  },
+  {
+    "id": "exp-vlc-002",
+    "name": "Jardín del Turia",
+    "type": "experience",
+    "description": "Paseo por el antiguo cauce del río convertido en parque, ideal para bici o picnic cerca de Ruzafa",
+    "image": "assets/images/partners/exp-vlc-002.jpg",
+    "lat": 39.4600,
+    "lng": -0.3650,
+    "cityId": "valencia",
+    "zones": [
+      "ruzafa",
+      "quatre-carreres"
+    ],
+    "active": true,
+    "global": false,
+    "plan": "basic",
+    "offer": "Alquiler de bici con descuento",
+    "distanceKey": "8 min walk",
+    "priceRange": "$",
+    "categoryKey": "experience",
+    "redirectUrl": "https://www.valencia.es/es/parques/jardin-del-turia"
+  },
+  {
+    "id": "rest-vlc-002",
+    "name": "Negrito",
+    "type": "restaurant",
+    "description": "Restaurante con paella valenciana auténtica en zona cercana a Ruzafa",
+    "image": "assets/images/partners/rest-vlc-002.jpg",
+    "lat": 39.4640,
+    "lng": -0.3680,
+    "cityId": "valencia",
+    "zones": [
+      "ruzafa",
+      "jesus"
+    ],
+    "active": true,
+    "global": false,
+    "plan": "basic",
+    "offer": "Paella para dos con bebida incluida",
+    "distanceKey": "5 min walk",
+    "priceRange": "$$$",
+    "categoryKey": "eat",
+    "redirectUrl": "https://www.restaurantenegrito.es/reservas"
   },
   {
     "id": "exp-vlc-001",
