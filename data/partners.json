@@ -8,7 +8,10 @@
     "lat": 40.4132,
     "lng": -3.7115,
     "cityId": "madrid",
-    "zones": ["centro", "latina"],
+    "zones": [
+      "centro",
+      "latina"
+    ],
     "active": true,
     "global": true,
     "isTop": true,
@@ -28,7 +31,9 @@
     "lat": 40.4221,
     "lng": -3.7063,
     "cityId": "madrid",
-    "zones": ["chamberi"],
+    "zones": [
+      "chamberi"
+    ],
     "active": true,
     "global": false,
     "plan": "basic",
@@ -47,7 +52,10 @@
     "lat": 40.4157,
     "lng": -3.7082,
     "cityId": "madrid",
-    "zones": ["centro", "latina"],
+    "zones": [
+      "centro",
+      "latina"
+    ],
     "active": true,
     "global": true,
     "isTop": true,
@@ -67,7 +75,9 @@
     "lat": 40.4159,
     "lng": -3.7085,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": true,
     "plan": "premium",
@@ -86,7 +96,9 @@
     "lat": 40.4235,
     "lng": -3.7056,
     "cityId": "madrid",
-    "zones": ["chamberi"],
+    "zones": [
+      "chamberi"
+    ],
     "active": true,
     "global": false,
     "plan": "basic",
@@ -105,7 +117,9 @@
     "lat": 40.4201,
     "lng": -3.7055,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": false,
     "plan": "basic",
@@ -124,7 +138,9 @@
     "lat": 40.4163,
     "lng": -3.7140,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": false,
     "plan": "basic",
@@ -143,7 +159,9 @@
     "lat": 40.4167,
     "lng": -3.7042,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": true,
     "plan": "premium",
@@ -162,7 +180,9 @@
     "lat": 40.4152,
     "lng": -3.7074,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": true,
     "isTop": true,
@@ -182,7 +202,22 @@
     "lat": 40.4240,
     "lng": -3.7175,
     "cityId": "madrid",
-    "zones": ["centro", "arganzuela", "retiro", "salamanca", "chamartin", "tetuan", "chamberi", "fuencarral-el-pardo", "moncloa-aravaca", "latina", "carabanchel", "usera", "hortaleza", "villaverde"],
+    "zones": [
+      "centro",
+      "arganzuela",
+      "retiro",
+      "salamanca",
+      "chamartin",
+      "tetuan",
+      "chamberi",
+      "fuencarral-el-pardo",
+      "moncloa-aravaca",
+      "latina",
+      "carabanchel",
+      "usera",
+      "hortaleza",
+      "villaverde"
+    ],
     "active": true,
     "global": true,
     "isTop": true,
@@ -202,7 +237,9 @@
     "lat": 40.4150,
     "lng": -3.7080,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": false,
     "plan": "basic",
@@ -221,7 +258,9 @@
     "lat": 40.4270,
     "lng": -3.7060,
     "cityId": "madrid",
-    "zones": ["chamberi"],
+    "zones": [
+      "chamberi"
+    ],
     "active": true,
     "global": false,
     "plan": "basic",
@@ -240,7 +279,9 @@
     "lat": 40.4170,
     "lng": -3.7038,
     "cityId": "madrid",
-    "zones": ["centro"],
+    "zones": [
+      "centro"
+    ],
     "active": true,
     "global": true,
     "plan": "premium",
@@ -259,7 +300,10 @@
     "lat": 40.4145,
     "lng": -3.7089,
     "cityId": "madrid",
-    "zones": ["centro", "latina"],
+    "zones": [
+      "centro",
+      "latina"
+    ],
     "active": true,
     "global": true,
     "plan": "premium",
@@ -268,5 +312,140 @@
     "priceRange": "$$$$",
     "categoryKey": "eat",
     "redirectUrl": "https://www.botin.es/reservas"
+  },
+  {
+    "id": "rest-bcn-001",
+    "name": "Tickets",
+    "type": "restaurant",
+    "description": "Experiencia gastronómica creativa de los hermanos Adrià (reserva con mucha antelación)",
+    "image": "assets/images/partners/rest-bcn-001.jpg",
+    "lat": 41.3785,
+    "lng": 2.1553,
+    "cityId": "barcelona",
+    "zones": [
+      "poble-sec",
+      "sants-montjuic"
+    ],
+    "active": true,
+    "global": false,
+    "isTop": true,
+    "plan": "top",
+    "offer": "Menú degustación con maridaje especial para huéspedes",
+    "distanceKey": "variable",
+    "priceRange": "$$$$",
+    "categoryKey": "eat",
+    "redirectUrl": "https://ticketsbar.es/reservas"
+  },
+  {
+    "id": "cafe-bcn-001",
+    "name": "Satan's Coffee Corner",
+    "type": "coffee_shop",
+    "description": "Café de especialidad de culto en el Gótico - uno de los mejores de Europa",
+    "image": "assets/images/partners/cafe-bcn-001.jpg",
+    "lat": 41.3839,
+    "lng": 2.1742,
+    "cityId": "barcelona",
+    "zones": [
+      "gotic",
+      "born"
+    ],
+    "active": true,
+    "global": false,
+    "plan": "premium",
+    "offer": "Café de filtro o flat white con descuento",
+    "distanceKey": "variable",
+    "priceRange": "$$",
+    "categoryKey": "drink",
+    "redirectUrl": "https://satanscoffee.com"
+  },
+  {
+    "id": "exp-bcn-001",
+    "name": "Park Güell",
+    "type": "experience",
+    "description": "Obra maestra de Gaudí con vistas espectaculares de Barcelona",
+    "image": "assets/images/partners/exp-bcn-001.jpg",
+    "lat": 41.4145,
+    "lng": 2.1525,
+    "cityId": "barcelona",
+    "zones": [
+      "gracia",
+      "sant-gervasi"
+    ],
+    "active": true,
+    "global": true,
+    "isTop": true,
+    "plan": "top",
+    "offer": "Entrada preferente + visita guiada exclusiva para huéspedes",
+    "distanceKey": "variable",
+    "priceRange": "$$",
+    "categoryKey": "experience",
+    "redirectUrl": "https://parkguell.barcelona/es"
+  },
+  {
+    "id": "rest-vlc-001",
+    "name": "Ricard Camarena Restaurant",
+    "type": "restaurant",
+    "description": "2 estrellas Michelin - cocina valenciana contemporánea de alto nivel",
+    "image": "assets/images/partners/rest-vlc-001.jpg",
+    "lat": 39.4731,
+    "lng": -0.3768,
+    "cityId": "valencia",
+    "zones": [
+      "centro",
+      "russafa"
+    ],
+    "active": true,
+    "global": false,
+    "isTop": true,
+    "plan": "top",
+    "offer": "Menú degustación con maridaje especial para huéspedes",
+    "distanceKey": "variable",
+    "priceRange": "$$$$",
+    "categoryKey": "eat",
+    "redirectUrl": "https://www.ricardcamarena.com/reservas"
+  },
+  {
+    "id": "cafe-vlc-001",
+    "name": "Dulce de Leche",
+    "type": "coffee_shop",
+    "description": "Brunch y café de especialidad muy querido en Ruzafa",
+    "image": "assets/images/partners/cafe-vlc-001.jpg",
+    "lat": 39.4629,
+    "lng": -0.3695,
+    "cityId": "valencia",
+    "zones": [
+      "ruzafa"
+    ],
+    "active": true,
+    "global": false,
+    "plan": "basic",
+    "offer": "Brunch completo con descuento",
+    "distanceKey": "variable",
+    "priceRange": "$$",
+    "categoryKey": "drink",
+    "redirectUrl": "https://www.instagram.com/dulcedelechevlc"
+  },
+  {
+    "id": "exp-vlc-001",
+    "name": "Ciudad de las Artes y las Ciencias",
+    "type": "experience",
+    "description": "Complejo futurista con Oceanogràfic, Hemisfèric y Museo de las Ciencias",
+    "image": "assets/images/partners/exp-vlc-001.jpg",
+    "lat": 39.4549,
+    "lng": -0.3504,
+    "cityId": "valencia",
+    "zones": [
+      "ciutat-vella",
+      "poblats-maritims"
+    ],
+    "active": true,
+    "global": true,
+    "isTop": true,
+    "plan": "top",
+    "offer": "Entrada combinada con descuento + visita guiada opcional",
+    "distanceKey": "variable",
+    "priceRange": "$$$",
+    "categoryKey": "experience",
+    "redirectUrl": "https://www.cac.es"
   }
 ]
